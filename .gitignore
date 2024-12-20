@@ -1,0 +1,5 @@
+.env
+.tmp
+/vendor
+/node_modules
+/.build
