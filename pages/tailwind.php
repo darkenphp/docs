@@ -1,4 +1,5 @@
-
+<?php $layout = (new Build\components\Layout('TailwindCSS'))->openContent(); ?>
+# Tailwind
 1. 
 npm install -D tailwindcss
 
@@ -48,3 +49,4 @@ ensure to create the output directory `public/assets` and run `npm run build` to
     <link href="./assets/output.css" rel="stylesheet">
 </head>
 ```
+<?= $layout->closeContent(); ?>

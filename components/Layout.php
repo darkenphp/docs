@@ -1,6 +1,7 @@
 <?php
 
 use Build\components\Menu;
+use Build\components\MenuMore;
 
 $layout = new class {
   #[\Darken\Attributes\Param]
@@ -13,68 +14,184 @@ $layout = new class {
   {
     return date('Y');
   }
+
+  public function nav() : array
+  {
+    return [
+      'Home' => '/',
+      'Tailwind' => '/tailwind',
+      'FrankenPHP' => '/frankenphp',
+    ];
+  }
+
+  public function markdownContent(): string
+  {
+    return $this->markdownify($this->content);
+  }
+
+  private function markdownify(string $text): string
+  {
+    $Parsedown = new Parsedown();
+    return $Parsedown->text($text);
+  }
 };
 ?>
-<html class="theme-dark" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
     <title><?= $layout->title; ?></title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="./assets/output.css" rel="stylesheet">
   </head>
   <body>
-    <div
-      class="flex h-screen bg-gray-50 dark:bg-gray-900">
-      <aside
-        class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
-        <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-            href="#">
-            Darken Docs
-          </a>
-          <ul class="mt-8">
-            <?= new Menu('Home', '/'); ?>
-            <?= new Menu('Tailwind', '/tailwind'); ?>
-          </ul>
+    <div class="flex h-screen">
+      <!-- Mobile menu toggle button -->
+      <input type="checkbox" id="menu-toggle" class="hidden peer">
+
+      <!-- Sidebar -->
+      <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
+        <a href="/" class="flex items-center justify-between h-16 px-4">
+          <span class="text-white font-bold uppercase">Darken Docs</span>
+          <label for="menu-toggle" class="text-white cursor-pointer">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="h-6 w-6 lg:hidden" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" 
+              />
+            </svg>
+          </label>
+</a>
+        <div class="flex flex-col flex-1 overflow-y-auto">
+          <nav class="flex-1 px-2">
+            <?php foreach ($layout->nav() as $name => $url) : ?>
+              <?= new Menu($name, $url) ?>
+            <?php endforeach; ?>
+          </nav>
         </div>
-      </aside>
-      <div class="flex flex-col flex-1 w-full">
-        <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-          <div
-            class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
-            <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="flex flex-col flex-1 overflow-y-auto">
+        <!-- Sticky Header -->
+        <header class="sticky top-0 z-50 border-b  bg-darkgrey text-white">
+          <div class="flex items-center justify-between py-3 px-4">
+            
+            <!-- Left Side: Breadcrumb + Mobile Menu Toggle -->
+            <div class="flex items-center space-x-3">
+              <!-- Mobile Menu Toggle -->
+              <label for="menu-toggle" class="md:hidden p-2 rounded focus:outline-none cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </label>
+
+            </div>
+
+            <!-- Center: Search Bar (hidden on small screens) -->
+            <div class="hidden md:flex flex-1 justify-center px-4">
+              <form class="relative w-full max-w-sm" method="get" action="/search">
                 <input
-                  class="w-full pl-8 py-2 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="Search for projects"
-                  aria-label="Search" />
-              </div>
+                  type="search"
+                  name="query"
+                  placeholder="Search..."
+                  class="w-full pl-3 pr-10 py-2 rounded border border-grey text-black
+                        focus:outline-none focus:ring focus:ring-orange transition"
+                />
+                <button
+                  type="submit"
+                  class="absolute top-1/2 right-3 -translate-y-1/2 text-grey hover:text-white"
+                  aria-label="Search"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M21 21l-4.35-4.35m0 0A7.481 7.481 0 014 10.25a7.48 7.48 0 014.35-6.5 
+                          7.48 7.48 0 016.5 4.35 7.48 7.48 0 010 9 
+                          7.48 7.48 0 01-6.5 4.35z"
+                    />
+                  </svg>
+                </button>
+            </form>
+            </div>
+
+            <!-- Right Side: Icons / Links -->
+            <div class="flex items-center space-x-4">
+              <a
+                href="https://github.com/darkenphp/framework"
+                class="flex items-center space-x-1 hover:text-grey"
+              >
+                <!-- GitHub Icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 
+                      0 5.303 3.438 9.8 8.205 11.385 
+                      .6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04 
+                      -3.338.724-4.042-1.61-4.042-1.61 
+                      -.546-1.387-1.333-1.758-1.333-1.758 
+                      -1.089-.744.083-.73.083-.73 
+                      1.205.084 1.84 1.236 1.84 1.236 
+                      1.07 1.835 2.809 1.304 3.495.997 
+                      .108-.776.418-1.304.76-1.603 
+                      -2.665-.305-5.466-1.332-5.466-5.93 
+                      0-1.31.469-2.38 1.235-3.22 
+                      -.123-.304-.535-1.527.117-3.176 
+                      0 0 1.008-.322 3.301 1.23 
+                      .957-.266 1.983-.399 3.003-.404 
+                      1.02.005 2.047.138 3.006.404 
+                      2.291-1.552 3.298-1.23 3.298-1.23 
+                      .653 1.649.241 2.872.118 3.176 
+                      .77.84 1.234 1.91 1.234 3.22 
+                      0 4.61-2.807 5.624-5.479 5.92 
+                      .43.372.81 1.102.81 2.222 
+                      0 1.606-.014 2.903-.014 3.296 
+                      0 .321.217.694.824.576 
+                      A11.996 11.996 0 0024 12.297 
+                      c0-6.627-5.373-12-12-12z"
+                  ></path>
+                </svg>
+              </a>
             </div>
           </div>
         </header>
-        <main class="h-full overflow-y-auto">
-          <div class="container p-6 mx-auto grid text-white">
-            <?= $layout->content; ?>
+
+        <div class="container mx-auto">
+          <div class="p-4 my-4 md">
+            <?= $layout->markdownContent() ?>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   </body>

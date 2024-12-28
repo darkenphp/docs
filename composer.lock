@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a8f2ddf5c174e031725232e40f19884",
+    "content-hash": "0e78556135b1832b1b026a462da48f93",
     "packages": [
         {
             "name": "darkenphp/framework",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/darkenphp/framework.git",
-                "reference": "a84304a44977094870ebb3d9db8ea04b099d781e"
+                "reference": "e3ea7ede169a8de4744c2ba4f4895e37959080e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darkenphp/framework/zipball/a84304a44977094870ebb3d9db8ea04b099d781e",
-                "reference": "a84304a44977094870ebb3d9db8ea04b099d781e",
+                "url": "https://api.github.com/repos/darkenphp/framework/zipball/e3ea7ede169a8de4744c2ba4f4895e37959080e0",
+                "reference": "e3ea7ede169a8de4744c2ba4f4895e37959080e0",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,57 @@
                 "issues": "https://github.com/darkenphp/framework/issues",
                 "source": "https://github.com/darkenphp/framework/tree/main"
             },
-            "time": "2024-12-20T12:57:56+00:00"
+            "time": "2024-12-27T15:53:03+00:00"
+        },
+        {
+            "name": "erusev/parsedown",
+            "version": "1.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "support": {
+                "issues": "https://github.com/erusev/parsedown/issues",
+                "source": "https://github.com/erusev/parsedown/tree/1.7.x"
+            },
+            "time": "2019-12-30T22:54:17+00:00"
         },
         {
             "name": "filp/whoops",

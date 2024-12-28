@@ -2,7 +2,8 @@
     "type": "project",
     "require": {
         "darkenphp/framework": "dev-main",
-        "ext-json": "*"
+        "ext-json": "*",
+        "erusev/parsedown": "^1.7"
     },
     "autoload": {
         "psr-4": {

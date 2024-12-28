@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Container styles for markdown content */
+.md {
+  @apply mx-auto max-w-3xl leading-relaxed;
+}
+
+/* Headings */
+.md h1 {
+  @apply text-4xl font-bold text-black mb-3 leading-tight;
+}
+.md h2 {
+  @apply text-3xl font-bold text-black mb-3 leading-snug;
+}
+.md h3 {
+  @apply text-2xl font-bold text-black mb-2 leading-snug;
+}
+.md h4 {
+  @apply text-xl font-bold text-black mb-2;
+}
+.md h5 {
+  @apply text-lg font-bold text-black mb-1;
+}
+.md h6 {
+  @apply text-base font-bold text-black;
+}
+
+/* Paragraphs & text */
+.md p {
+  @apply text-base text-grey mb-3;
+}
+.md strong {
+  @apply font-bold;
+}
+.md em {
+  @apply italic;
+}
+
+/* Links */
+.md a {
+  @apply text-orange underline;
+}
+.md a:hover {
+  @apply text-deeporange;
+}
+
+/* Lists */
+.md ul {
+  @apply list-disc ml-6 mb-4;
+}
+.md ol {
+  @apply list-decimal ml-6 mb-4;
+}
+.md li {
+  @apply text-base text-grey mb-2;
+}
+
+/* Blockquotes */
+.md blockquote {
+  @apply border-l-4 border-grey pl-4 italic text-grey my-4;
+}
+
+/* Horizontal rule */
+.md hr {
+  @apply my-6 border-grey;
+}
+
+/* Images */
+.md img {
+  @apply mx-auto my-4;
+}
+
+/* Inline code */
+.md code {
+  @apply text-white;
+}
+
+/* Code blocks */
+.md pre {
+  @apply bg-darken text-white p-4 mb-3 rounded-xl overflow-auto;
+}
+.md pre code {
+  @apply text-sm;
+}
+
+/* Tables (if you use them) */
+.md table {
+  @apply w-full table-auto border-collapse my-4;
+}
+.md th {
+  @apply border-b border-grey p-2 text-left font-bold bg-grey text-white;
+}
+.md td {
+  @apply border-b border-grey p-2 align-top;
+}
+
