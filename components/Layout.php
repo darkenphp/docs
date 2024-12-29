@@ -15,13 +15,25 @@ $layout = new class {
     return date('Y');
   }
 
-  public function nav() : array
+  public function nav(): array
   {
     return [
-      'Home' => '/',
-      'Compile Concept' => '/compile',
+      'About' => '/',
+      'Getting Started' => '/install',
+      'Concepts' => null,
+      'Build Compiler' => '/compile',
       'Extend Runtime' => '/runtime',
+      'Application' => null,
+      'Routing' => '/routing',
+      'Config' => '/config',
+      'Middleware' => '/middleware',
+      'Dependency Injection' => '/di',
+      'Frontend' => null,
+      'Components' => '/components',
+      'Layouts' => '/layouts',
       'Tailwind' => '/tailwind',
+      'Deplyoment' => null,
+      'Vercel' => '/deploy',
       'FrankenPHP' => '/frankenphp',
     ];
   }
@@ -29,125 +41,114 @@ $layout = new class {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title><?= htmlspecialchars($layout->title); ?></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="./assets/output.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="flex h-screen">
-      <!-- Mobile menu toggle button -->
-      <input type="checkbox" id="menu-toggle" class="hidden peer">
 
-      <!-- Sidebar -->
-      <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
-        <a href="/" class="flex items-center justify-between h-16 px-6">
-          <span class="text-white font-bold uppercase">Darken Docs</span>
-          <label for="menu-toggle" class="text-white cursor-pointer">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              class="h-6 w-6 lg:hidden" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12" 
-              />
-            </svg>
-          </label>
-</a>
-        <div class="flex flex-col flex-1 overflow-y-auto">
-          <nav class="flex-1 px-2">
-            <?php foreach ($layout->nav() as $name => $url) : ?>
-              <?= new Menu($name, $url) ?>
-            <?php endforeach; ?>
-          </nav>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <title><?= htmlspecialchars($layout->title); ?></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="./assets/output.css" rel="stylesheet">
+</head>
 
-      <!-- Main content -->
+<body>
+  <div class="flex h-screen">
+    <!-- Mobile menu toggle button -->
+    <input type="checkbox" id="menu-toggle" class="hidden peer">
+
+    <!-- Sidebar -->
+    <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
+      <a href="/" class="flex items-center justify-between h-16 px-6">
+        <span class="text-white font-bold uppercase">Darken Docs</span>
+        <label for="menu-toggle" class="text-white cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 lg:hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </label>
+      </a>
       <div class="flex flex-col flex-1 overflow-y-auto">
-        <!-- Sticky Header -->
-        <header class="sticky top-0 z-50 border-b  bg-darkgrey text-white">
-          <div class="flex items-center justify-between py-3 px-4">
-            
-            <!-- Left Side: Breadcrumb + Mobile Menu Toggle -->
-            <div class="flex items-center space-x-3">
-              <!-- Mobile Menu Toggle -->
-              <label for="menu-toggle" class="md:hidden p-2 rounded focus:outline-none cursor-pointer">
+        <nav class="flex-1 px-2">
+          <?php foreach ($layout->nav() as $name => $url) : ?>
+            <?= new Menu($name, $url) ?>
+          <?php endforeach; ?>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex flex-col flex-1 overflow-y-auto">
+      <!-- Sticky Header -->
+      <header class="sticky top-0 z-50 border-b border-b-lightgrey bg-white text-darken">
+        <div class="flex items-center justify-between py-3 px-4">
+
+          <!-- Left Side: Breadcrumb + Mobile Menu Toggle -->
+          <div class="flex items-center space-x-3">
+            <!-- Mobile Menu Toggle -->
+            <label for="menu-toggle" class="md:hidden p-2 rounded focus:outline-none cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </label>
+          </div>
+          <!-- Center: Search Bar (hidden on small screens) -->
+          <div class="hidden md:flex flex-1 justify-center px-4">
+            <form class="relative w-full max-w-sm" method="get" action="/search">
+              <input
+                type="search"
+                name="query"
+                placeholder="Search..."
+                class="w-full pl-3 pr-10 py-2 rounded border border-lightgrey text-black focus:outline-none focus:ring focus:ring-grey transition" />
+              <button
+                type="submit"
+                class="absolute top-1/2 right-3 -translate-y-1/2 text-grey hover:text-white"
+                aria-label="Search">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
+                  class="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                >
+                  stroke-width="2">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </label>
-
-            </div>
-
-            <!-- Center: Search Bar (hidden on small screens) -->
-            <div class="hidden md:flex flex-1 justify-center px-4">
-              <form class="relative w-full max-w-sm" method="get" action="/search">
-                <input
-                  type="search"
-                  name="query"
-                  placeholder="Search..."
-                  class="w-full pl-3 pr-10 py-2 rounded border border-grey text-black
-                        focus:outline-none focus:ring focus:ring-primary transition"
-                />
-                <button
-                  type="submit"
-                  class="absolute top-1/2 right-3 -translate-y-1/2 text-grey hover:text-white"
-                  aria-label="Search"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M21 21l-4.35-4.35m0 0A7.481 7.481 0 014 10.25a7.48 7.48 0 014.35-6.5 
+                    d="M21 21l-4.35-4.35m0 0A7.481 7.481 0 014 10.25a7.48 7.48 0 014.35-6.5 
                           7.48 7.48 0 016.5 4.35 7.48 7.48 0 010 9 
-                          7.48 7.48 0 01-6.5 4.35z"
-                    />
-                  </svg>
-                </button>
+                          7.48 7.48 0 01-6.5 4.35z" />
+                </svg>
+              </button>
             </form>
-            </div>
+          </div>
 
-            <!-- Right Side: Icons / Links -->
-            <div class="flex items-center space-x-4">
-              <a
-                href="https://github.com/darkenphp/framework"
-                class="flex items-center space-x-1 hover:text-grey"
-              >
-                <!-- GitHub Icon -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 
+          <!-- Right Side: Icons / Links -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="https://github.com/darkenphp/framework"
+              class="flex items-center space-x-1 hover:text-grey">
+              <!-- GitHub Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 
                       0 5.303 3.438 9.8 8.205 11.385 
                       .6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04 
                       -3.338.724-4.042-1.61-4.042-1.61 
@@ -170,25 +171,25 @@ $layout = new class {
                       0 1.606-.014 2.903-.014 3.296 
                       0 .321.217.694.824.576 
                       A11.996 11.996 0 0024 12.297 
-                      c0-6.627-5.373-12-12-12z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+                      c0-6.627-5.373-12-12-12z"></path>
+              </svg>
+            </a>
           </div>
-        </header>
-
-        <div class="container mx-auto">
-          <div class="p-4 my-4 md">
-            <?= $layout->content; ?>
-          </div>
+        </div>
+      </header>
+      <div class="container mx-auto">
+        <div class="p-4 my-4 md">
+          <?= $layout->content; ?>
         </div>
       </div>
     </div>
+  </div>
 
-    <script type="module">
+  <script type="module">
     // 1) Import Shiki from a CDN (specify the version you want)
-    import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
+    import {
+      codeToHtml
+    } from 'https://esm.sh/shiki@1.0.0'
     // or
     // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
 
@@ -197,7 +198,8 @@ $layout = new class {
 
     // 3) Highlight them!
     // Because codeToHtml is async, we can use a small async function or Promise.all
-    ;(async () => {
+    ;
+    (async () => {
       for (const block of codeBlocks) {
         // Extract the language (e.g. "php" from "language-php")
         const langClass = Array.from(block.classList).find(cls => cls.startsWith('language-'))
@@ -219,5 +221,6 @@ $layout = new class {
       }
     })()
   </script>
-  </body>
+</body>
+
 </html>
