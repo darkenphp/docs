@@ -4,8 +4,12 @@ namespace App;
 
 use Darken\Config\ConfigHelperTrait;
 use Darken\Config\ConfigInterface;
+use Darken\Events\AfterBuildEvent;
 use Darken\Service\ContainerService;
 use Darken\Service\ContainerServiceInterface;
+use Darken\Service\EventService;
+use Darken\Service\EventServiceInterface;
+use Yiisoft\Files\FileHelper;
 
 /**
  * Config class implementing configuration and dependency injection management.
@@ -14,7 +18,7 @@ use Darken\Service\ContainerServiceInterface;
  * services for dependency injection. It uses environment variables to customize
  * various aspects of the application setup.
  */
-class Config implements ConfigInterface, ContainerServiceInterface
+class Config implements ConfigInterface, ContainerServiceInterface, EventServiceInterface
 {
     use ConfigHelperTrait;
 
@@ -38,6 +42,27 @@ class Config implements ConfigInterface, ContainerServiceInterface
     public function containers(ContainerService $service): ContainerService
     {
         return $service;
+    }
+
+    public function getContentsFilePath() : string
+    {
+        return $this->getBuildOutputFolder() . DIRECTORY_SEPARATOR . 'contents.json';
+    }
+
+    public function events(EventService $service): EventService
+    {
+        return $service->on(AfterBuildEvent::class, function() {
+            $files = FileHelper::findFiles($this->getRootDirectoryPath() . DIRECTORY_SEPARATOR . 'contents', ['only' => ['*.md']]);
+            $json = [];
+            foreach ($files as $markdown) {
+                $json[] = [
+                    'content' => file_get_contents($markdown),
+                    'href' => pathinfo($markdown, PATHINFO_FILENAME),
+                ];
+            }
+
+            file_put_contents($this->getContentsFilePath(), json_encode($json));
+        });
     }
 
     /**

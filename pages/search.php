@@ -1,15 +1,36 @@
 <?php
 
+use App\Config;
 use Build\components\Layout;
+use Darken\Attributes\Inject;
 use Darken\Attributes\QueryParam;
 
 $search = new class {
     #[QueryParam]
     public string|null $query;
+
+    #[Inject]
+    public Config $config;
+
+    public function getSanitizedQuery() : string
+    {
+        return htmlspecialchars($this->query);
+    }
+
+    public function getResults() : array
+    {
+        $json = json_decode(file_get_contents($this->config->getContentsFilePath()), true);
+
+        $results = array_filter($json, fn($item) => stripos($item['content'], $this->getSanitizedQuery()) !== false);
+
+        return $results;
+    }
 };
 
 $layout = (new Layout('Search'))->openContent();
 ?>
 <h1>Search</h1>
-<p>Searching for: <?= htmlspecialchars($search->query); ?></p>
+<?php foreach ($search->getResults() as $result) : ?>
+    <a class="py-2 border-b border-b-lightgrey block" href="<?= $result['href']; ?>"><?= $result['href']; ?></a>
+<?php endforeach; ?>
 <?= $layout->closeContent(); ?>

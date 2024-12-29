@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/darkenphp/framework.git",
-                "reference": "34381fd203b2630cadeccda58f64eaa3e5aa6c90"
+                "reference": "3185c39e4349c9715f4b2027fa2185998225c150"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darkenphp/framework/zipball/34381fd203b2630cadeccda58f64eaa3e5aa6c90",
-                "reference": "34381fd203b2630cadeccda58f64eaa3e5aa6c90",
+                "url": "https://api.github.com/repos/darkenphp/framework/zipball/3185c39e4349c9715f4b2027fa2185998225c150",
+                "reference": "3185c39e4349c9715f4b2027fa2185998225c150",
                 "shasum": ""
             },
             "require": {
@@ -26,6 +26,7 @@
                 "nyholm/psr7": "^1.8",
                 "nyholm/psr7-server": "^1.1",
                 "php": "^8.3",
+                "psr/event-dispatcher": "^1.0",
                 "psr/http-message": "^2.0",
                 "psr/http-server-handler": "^1.0",
                 "psr/http-server-middleware": "^1.0",
@@ -59,7 +60,7 @@
                 "issues": "https://github.com/darkenphp/framework/issues",
                 "source": "https://github.com/darkenphp/framework/tree/main"
             },
-            "time": "2024-12-29T14:13:17+00:00"
+            "time": "2024-12-29T15:18:01+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -383,6 +384,56 @@
                 }
             ],
             "time": "2023-11-08T09:30:43+00:00"
+        },
+        {
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
+            },
+            "time": "2019-01-08T18:20:26+00:00"
         },
         {
             "name": "psr/http-factory",

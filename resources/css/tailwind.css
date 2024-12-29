@@ -74,7 +74,7 @@
 }
 
 .md pre>pre {
-  @apply p-4 text-xs;
+  @apply p-4 text-sm;
 }
 
 

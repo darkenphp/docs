@@ -30,6 +30,7 @@ $layout = new class {
       'Middleware' => '/middleware',
       'Dependency Injection' => '/di',
       'APIs' => 'apis',
+      'Events' => '/events',
       'Frontend' => null,
       'Components' => '/components',
       'Layouts' => '/layouts',
