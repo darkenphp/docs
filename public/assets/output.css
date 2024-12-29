@@ -666,6 +666,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -712,10 +716,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.max-w-none {
-  max-width: none;
 }
 
 .max-w-sm {
@@ -773,12 +773,6 @@ video {
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -799,16 +793,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-lightgrey {
-  --tw-border-opacity: 1;
-  border-color: rgb(117 117 117 / var(--tw-border-opacity, 1));
-}
-
-.border-orange {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 111 0 / var(--tw-border-opacity, 1));
-}
-
 .border-grey {
   --tw-border-opacity: 1;
   border-color: rgb(128 128 128 / var(--tw-border-opacity, 1));
@@ -822,11 +806,6 @@ video {
 .bg-darkgrey {
   --tw-bg-opacity: 1;
   background-color: rgb(66 66 66 / var(--tw-bg-opacity, 1));
-}
-
-.bg-grey {
-  --tw-bg-opacity: 1;
-  background-color: rgb(128 128 128 / var(--tw-bg-opacity, 1));
 }
 
 .p-2 {
@@ -862,11 +841,6 @@ video {
   padding-bottom: 0.75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .pl-3 {
   padding-left: 0.75rem;
 }
@@ -896,23 +870,9 @@ video {
   line-height: 1.25rem;
 }
 
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.text-lightgrey {
-  --tw-text-opacity: 1;
-  color: rgb(117 117 117 / var(--tw-text-opacity, 1));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .text-grey {
@@ -920,10 +880,9 @@ video {
   color: rgb(128 128 128 / var(--tw-text-opacity, 1));
 }
 
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .transition {
@@ -977,9 +936,8 @@ video {
 
 .md h1 {
   margin-bottom: 0.75rem;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 100;
   line-height: 1.25;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
@@ -987,18 +945,18 @@ video {
 
 .md h2 {
   margin-bottom: 0.75rem;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: 700;
   line-height: 1.375;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  color: rgb(66 66 66 / var(--tw-text-opacity, 1));
 }
 
 .md h3 {
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: 700;
   line-height: 1.375;
   --tw-text-opacity: 1;
@@ -1009,24 +967,6 @@ video {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.md h5 {
-  margin-bottom: 0.25rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.md h6 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
@@ -1035,10 +975,10 @@ video {
 
 .md p {
   margin-bottom: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(128 128 128 / var(--tw-text-opacity, 1));
+  color: rgb(66 66 66 / var(--tw-text-opacity, 1));
 }
 
 .md strong {
@@ -1081,7 +1021,7 @@ video {
   font-size: 1rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
-  color: rgb(128 128 128 / var(--tw-text-opacity, 1));
+  color: rgb(66 66 66 / var(--tw-text-opacity, 1));
 }
 
 /* Blockquotes */
@@ -1095,7 +1035,7 @@ video {
   padding-left: 1rem;
   font-style: italic;
   --tw-text-opacity: 1;
-  color: rgb(128 128 128 / var(--tw-text-opacity, 1));
+  color: rgb(66 66 66 / var(--tw-text-opacity, 1));
 }
 
 /* Horizontal rule */
@@ -1104,7 +1044,7 @@ video {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   --tw-border-opacity: 1;
-  border-color: rgb(128 128 128 / var(--tw-border-opacity, 1));
+  border-color: rgb(66 66 66 / var(--tw-border-opacity, 1));
 }
 
 /* Images */
@@ -1119,6 +1059,13 @@ video {
 /* Inline code */
 
 .md code {
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 18 18 / var(--tw-bg-opacity, 1));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
@@ -1129,16 +1076,7 @@ video {
   margin-bottom: 0.75rem;
   overflow: auto;
   border-radius: 0.75rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(18 18 18 / var(--tw-bg-opacity, 1));
   padding: 1rem;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.md pre code {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 /* Tables (if you use them) */
@@ -1156,7 +1094,7 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(128 128 128 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
-  background-color: rgb(128 128 128 / var(--tw-bg-opacity, 1));
+  background-color: rgb(66 66 66 / var(--tw-bg-opacity, 1));
   padding: 0.5rem;
   text-align: left;
   font-weight: 700;
@@ -1177,23 +1115,14 @@ video {
   background-color: rgb(255 111 0 / var(--tw-bg-opacity, 1));
 }
 
-.hover\:text-softorange:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 167 38 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-white:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
 .hover\:text-grey:hover {
   --tw-text-opacity: 1;
   color: rgb(128 128 128 / var(--tw-text-opacity, 1));
 }
 
-.hover\:underline:hover {
-  text-decoration-line: underline;
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .focus\:outline-none:focus {

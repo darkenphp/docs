@@ -4,7 +4,7 @@ use Build\components\Menu;
 use Build\components\MenuMore;
 
 $layout = new class {
-  #[\Darken\Attributes\Param]
+  #[\Darken\Attributes\ConstructorParam]
   public $title;
 
   #[\Darken\Attributes\Slot]
@@ -19,20 +19,11 @@ $layout = new class {
   {
     return [
       'Home' => '/',
+      'Compile Concept' => '/compile',
+      'Extend Runtime' => '/runtime',
       'Tailwind' => '/tailwind',
       'FrankenPHP' => '/frankenphp',
     ];
-  }
-
-  public function markdownContent(): string
-  {
-    return $this->markdownify($this->content);
-  }
-
-  private function markdownify(string $text): string
-  {
-    $Parsedown = new Parsedown();
-    return $Parsedown->text($text);
   }
 };
 ?>
@@ -40,7 +31,7 @@ $layout = new class {
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title><?= $layout->title; ?></title>
+    <title><?= htmlspecialchars($layout->title); ?></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="./assets/output.css" rel="stylesheet">
   </head>
@@ -189,10 +180,44 @@ $layout = new class {
 
         <div class="container mx-auto">
           <div class="p-4 my-4 md">
-            <?= $layout->markdownContent() ?>
+            <?= $layout->content; ?>
           </div>
         </div>
       </div>
     </div>
+
+    <script type="module">
+    // 1) Import Shiki from a CDN (specify the version you want)
+    import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
+    // or
+    // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
+
+    // 2) Find all <code> elements that have a class starting with "language-"
+    const codeBlocks = document.querySelectorAll('code[class^="language-"]')
+
+    // 3) Highlight them!
+    // Because codeToHtml is async, we can use a small async function or Promise.all
+    ;(async () => {
+      for (const block of codeBlocks) {
+        // Extract the language (e.g. "php" from "language-php")
+        const langClass = Array.from(block.classList).find(cls => cls.startsWith('language-'))
+        const lang = langClass.replace('language-', '')
+
+        // Grab the code from inside the <code> element
+        const code = block.textContent
+
+        // Generate highlighted HTML
+        const highlighted = await codeToHtml(code, {
+          lang,
+          theme: 'rose-pine' // or your preferred theme
+        })
+
+        // Replace the old <pre><code> with the new highlighted HTML
+        // NOTE: If your code is wrapped in a <pre>, you might want to replace the parent node’s innerHTML.
+        //       If it’s only <code> without a <pre>, you can directly replace block.outerHTML.
+        block.parentNode.innerHTML = highlighted
+      }
+    })()
+  </script>
   </body>
 </html>

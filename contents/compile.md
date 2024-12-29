@@ -1,24 +1,26 @@
-<?php $layout = (new Build\components\Layout('TailwindCSS'))->openContent(); ?>
 # Compile Concept
 
 To understand how Darken works we need to understand the concept of compiling.
 
-All pages or components (which are technically just pages) are using anyonmous classes, which allows you to put logic into the class
+All components (or pages, which are technically just components) are using anyonmous classes, which allows you to put logic into the class
 but also directly us it in the template.
 
 File: pages/sub/Test.php
-```
+
+```php
 $foo = new class {
-    public function bar(): string
+    public string $bar = 'baz';
+
+    public function largeBar(): string
     {
-        return 'baz';
+        return strtoupper($this->bar);
     }
 };
 ?>
-<h1><\?= $foo->bar(); ?></h1>
+<h1><?= $foo->largeBar(); ?></h1>
 ```
 
-Since those files are not namespaced we need to create a file in the .build directly which is resolvable by a namespaced
+Since those files are not namespaced we need to create a file in the `.build` directly which is resolvable by a namespaced
 file and loads the original code. The namespaced file is what we call the *polyfill* file and the original file will be compiled
 so name it *compiled* file. This means the above example file `pages/sub/test.php` will be compiled to
 
@@ -28,7 +30,7 @@ so name it *compiled* file. This means the above example file `pages/sub/test.ph
 This is what the pollyfill file looks like:
 
 ```php
-<\?php
+<?php
 namespace Build\pages\sub;
 
 class Test extends \Darken\Code\Runtime
@@ -43,7 +45,7 @@ class Test extends \Darken\Code\Runtime
 When you new open the Namespaced polyfill and render it
 
 ```php
-<\?= (new Build\pages\sub\Test())->render(); ?>
+<?= (new Build\pages\sub\Test())->render(); ?>
 ```
 
 ::: render() is defined in the Darken\Code\Runtime and invokes and handles the defined renderFilePath() method :::
@@ -69,7 +71,7 @@ $foo = new class($this) {
     }
 };
 ?>
-<h1><\?= $foo->bar(); ?></h1>
+<h1><?= $foo->bar(); ?></h1>
 ```
 
 This is where the only magic happens, since you can not have a constructor in an anonymous class and directly run this object without to create it
@@ -85,7 +87,7 @@ $obj = new class {
     public string $bar;
 };
 ?>
-<h1><\?= $obj->bar; ?></h1>
+<h1><?= $obj->bar; ?></h1>
 ```
 
 This will resolve the constructor parameter `bar` from the runtime object and inject it into the class attribute, with perfectly
@@ -94,7 +96,7 @@ typed properties.
 To understand how this works, lets take a look at the polyfill code for the above example:
 
 ```php
-<\?php
+<?php
 namespace Build\pages\sub;
 
 class Test extends \Darken\Code\Runtime
@@ -113,7 +115,7 @@ class Test extends \Darken\Code\Runtime
 
 now the compiled code will inject the argument param in the constrcutor, this looks like this:
 
-```
+```php
 $obj = new class($this)
 {
     #[\Darken\Attributes\ConstructorParam]
@@ -128,5 +130,3 @@ $obj = new class($this)
 ```
 
 The method `setArgumentParam` and `getArgumentParam` are booth provided by the `\Darken\Code\Runtime` class and allows you to talke between polyfill and compiled, since the are from the same `Darken\Code\Runtime` class.
-
-<?= $layout->closeContent(); ?>

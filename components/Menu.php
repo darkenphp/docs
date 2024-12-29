@@ -1,9 +1,9 @@
 <?php
 $menu = new class {
-  #[\Darken\Attributes\Param]
+  #[\Darken\Attributes\ConstructorParam]
   public string $label;
 
-  #[\Darken\Attributes\Param]
+  #[\Darken\Attributes\ConstructorParam]
   public string $href;
 };
 ?>

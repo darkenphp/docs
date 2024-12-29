@@ -3,13 +3,13 @@
 use Build\components\Menu;
 
 $more = new class {
-    #[\Darken\Attributes\Param]
+    #[\Darken\Attributes\ConstructorParam]
     public string $label;
 
     #[\Darken\Attributes\Slot]
     public string $buttons;
 
-    #[\Darken\Attributes\Param]
+    #[\Darken\Attributes\ConstructorParam]
     public array $items = [];
 };
 ?>

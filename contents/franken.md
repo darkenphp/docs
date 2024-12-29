@@ -1,9 +1,4 @@
-<?php
 
-use Build\components\Layout;
-
-$layout = (new Layout('FrankenPHP'))->openContent();
-?>
 # FrankenPHP
 change the index.php to handle frankenphp:
 
@@ -52,4 +47,3 @@ docker run \
     -p 8081:8081 -p 8082:8082 \
     dunglas/frankenphp
 ```
-<?= $layout->closeContent(); ?>
