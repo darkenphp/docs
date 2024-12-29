@@ -42,7 +42,7 @@ $layout = new class {
 
       <!-- Sidebar -->
       <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
-        <a href="/" class="flex items-center justify-between h-16 px-4">
+        <a href="/" class="flex items-center justify-between h-16 px-6">
           <span class="text-white font-bold uppercase">Darken Docs</span>
           <label for="menu-toggle" class="text-white cursor-pointer">
             <svg 
@@ -106,7 +106,7 @@ $layout = new class {
                   name="query"
                   placeholder="Search..."
                   class="w-full pl-3 pr-10 py-2 rounded border border-grey text-black
-                        focus:outline-none focus:ring focus:ring-orange transition"
+                        focus:outline-none focus:ring focus:ring-primary transition"
                 />
                 <button
                   type="submit"

@@ -10,21 +10,21 @@
 
 /* Headings */
 .md h1 {
-  @apply text-5xl text-black mb-3 leading-tight font-thin;
+  @apply text-3xl text-primary mb-5 leading-tight font-bold;
 }
 .md h2 {
-  @apply text-2xl text-darkgrey mb-3 leading-snug font-bold;
+  @apply text-xl text-black mb-5 leading-snug;
 }
 .md h3 {
-  @apply text-xl text-black mb-2 leading-snug font-bold;
+  @apply text-lg text-black mb-4 leading-snug;
 }
 .md h4 {
-  @apply text-xl  text-black mb-2;
+  @apply text-xl  text-black mb-4;
 }
 
 /* Paragraphs & text */
 .md p {
-  @apply text-lg text-darkgrey mb-3;
+  @apply text-lg text-darken mb-3;
 }
 .md strong {
   @apply font-bold;
@@ -35,10 +35,10 @@
 
 /* Links */
 .md a {
-  @apply text-orange underline;
+  @apply text-primary underline;
 }
 .md a:hover {
-  @apply text-deeporange;
+  @apply text-primary;
 }
 
 /* Lists */
@@ -49,12 +49,12 @@
   @apply list-decimal ml-6 mb-4;
 }
 .md li {
-  @apply text-base text-darkgrey mb-2;
+  @apply text-base text-darken mb-2;
 }
 
 /* Blockquotes */
 .md blockquote {
-  @apply border-l-4 border-grey pl-4 italic text-darkgrey my-4;
+  @apply border-l-4 border-grey pl-4 italic text-darken my-4;
 }
 
 /* Horizontal rule */
@@ -68,14 +68,19 @@
 }
 
 /* Inline code */
-.md code {
+.md :not(pre) > code {
   @apply bg-darken text-white px-1 rounded text-sm;
 }
 
 /* Code blocks */
 .md pre {
-  @apply p-4 mb-3 rounded-xl overflow-auto;
+  @apply mb-3 rounded-xl overflow-auto;
 }
+
+.md pre>pre {
+  @apply p-4 text-xs;
+}
+
 
 /* Tables (if you use them) */
 .md table {

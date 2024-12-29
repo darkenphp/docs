@@ -2,8 +2,8 @@
 # FrankenPHP
 change the index.php to handle frankenphp:
 
-```
-<\?php
+```php
+<?php
 declare(strict_types=1);
 
 use App\Config;

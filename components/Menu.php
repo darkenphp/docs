@@ -7,6 +7,6 @@ $menu = new class {
   public string $href;
 };
 ?>
-<a href="<?= $menu->href; ?>" class="flex items-center py-2 px-2 text-white hover:bg-orange hover:text-white rounded-lg group">
+<a href="<?= $menu->href; ?>" class="flex items-center py-2 px-4 text-white hover:bg-primary hover:text-white rounded-lg group text-xs font-bold">
   <?= $menu->label ?>
 </a>

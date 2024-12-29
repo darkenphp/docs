@@ -1,14 +1,12 @@
-
 # Extend Compiler with Custom Runtime
 
-one of the amazing things you can do, when all files needs to be compiled before running, you can hook into this compile process, which
-allows you to do any sort of magic you want.
+One of the amazing things you can do when all files need to be compiled before running is hook into this compile process. This allows you to perform any sort of magic you want.
 
-A basic example is to create a custom runtime that will be compiled into the final output, this runtime can be used to do any sort of magic you want.
+A basic example is creating a custom runtime that will be compiled into the final output. This runtime can be used to perform any sort of magic you want.
 
-All you need to is to create a own runtime file
+All you need to do is create your own runtime file.
 
-Runtime: App\MyRuntime.php
+Runtime: `App\MyRuntime.php`
 
 ```php
 class MyRuntime extends \Darken\Code\Runtime
@@ -20,17 +18,15 @@ class MyRuntime extends \Darken\Code\Runtime
 }
 ```
 
-::: todo: where to defined setRuntimeClass(?...) :::
+::: todo: Where to define `setRuntimeClass`(?...) :::
 
-And configure Darken to use this class while building the project, now every component (and page, which its technigally just a component) will 
-extend from this class.
+Configure Darken to use this class while building the project. Now every component (and page, which is technically just a component) will extend this class.
 
-Now since all components are extending from this class, you can listen for any attributes and modified the compiled output, which then interacts with
-your runtime class.
+Since all components extend this class, you can listen for any attributes and modify the compiled output to interact with your runtime class.
 
-Create an attribute, for example we want to create a Attribute which automataiclly resolves the user from an db system:
+Create an attribute. For example, we want to create an attribute that automatically resolves a user from a database system.
 
-Attribute: App\Attributes\FindUser.php
+Attribute: `App\Attributes\FindUser.php`
 
 ```php
 #[Attribute(Attribute::TARGET_PROPERTY)]
@@ -73,7 +69,7 @@ class FindUserHook extends PropertyAttributeHook
 }
 ```
 
-Now if you use this attribute in any component, it will automatically resolve the user from the database:
+Now, if you use this attribute in any component, it will automatically resolve the user from the database:
 
 ```php
 $class = new class {
@@ -82,7 +78,7 @@ $class = new class {
 };
 ```
 
-Internally this will look like this after the compiling
+Internally, this will look like this after compiling:
 
 ```php
 $class = new class {
@@ -94,28 +90,3 @@ $class = new class {
     }
 };
 ```
-
-::: code-group
-
-```js [config.js]
-/**
- * @type {import('vitepress').UserConfig}
- */
-const config = {
-  // ...
-}
-
-export default config
-```
-
-```ts [config.ts]
-import type { UserConfig } from 'vitepress'
-
-const config: UserConfig = {
-  // ...
-}
-
-export default config
-```
-
-:::

@@ -7,11 +7,8 @@ module.exports = {
   theme: {
     colors: {
       darken: '#121212',
-      orange: '#FF6F00',
-      softorange: '#FFA726',
-      deeporange: '#E65100',
+      primary: '#ff2c2c',
       grey: 'grey',
-      lightgrey: '#757575',
       darkgrey: '#424242',
       white: 'white',
       black: 'black',
