@@ -2,6 +2,7 @@
 
 use Build\components\Menu;
 use Build\components\MenuMore;
+use Darken\Web\Request;
 
 $layout = new class {
   #[\Darken\Attributes\ConstructorParam]
@@ -28,6 +29,7 @@ $layout = new class {
       'Config' => '/config',
       'Middleware' => '/middleware',
       'Dependency Injection' => '/di',
+      'APIs' => 'apis',
       'Frontend' => null,
       'Components' => '/components',
       'Layouts' => '/layouts',
@@ -57,7 +59,7 @@ $layout = new class {
     <!-- Sidebar -->
     <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
       <a href="/" class="flex items-center justify-between h-16 px-6">
-        <span class="text-white font-bold uppercase">Darken Docs</span>
+        <span class="text-white font-extralight uppercase">Darken Docs</span>
         <label for="menu-toggle" class="text-white cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"

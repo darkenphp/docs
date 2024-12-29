@@ -40,7 +40,8 @@ $layout = (new Layout($page->slug))->openContent();
     <?php if ($page->hasMarkdownFile()) : ?>
         <?= $page->getMarkdownContent(); ?>
     <?php else : ?>
-        <?= $page->getMarkdownFilePath(); ?>
         <h1>404 - Page not found</h1>
+
+        <p><?= $page->getMarkdownFilePath(); ?></p>
     <?php endif; ?>
 <?= $layout->closeContent(); ?>
