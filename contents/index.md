@@ -1,18 +1,32 @@
-# Darken PHP: A Framework with a Twist
+# A Framework with a Twist
 
-**Darken PHP** merges the best of frameworks like Nuxt.js and Astro into a PHP-based system without the overhead of Node.js dependencies. It’s designed for simplicity, efficiency, and minimalism, offering a unique single-file component approach.
+Darken PHP merges the best of frameworks like Nuxt.js and Astro into a PHP-based system without the overhead of Node.js dependencies. It’s designed for simplicity, efficiency, and minimalism, offering a unique single-file component approach.
 
-## Key Features and Benefits
+### Single-File Components
+
+```php
+<?php
+$page = new class {
+
+    #[\Darken\Attributes\RouteParam]
+    public string $name;
+
+    public function getGreeting(): string
+    {
+        return 'Hello, ' . ucfirst($this->name) . '!';
+    }
+};
+?>
+<h1><?= $page->getGreeting(); ?></h1>
+```
+
+- Combine controller logic, view code, and data flow in one file.
+- Simplified structure for faster prototyping and easier maintenance.
 
 ### Minimalistic Project Structure
 
 - Starts with just a `public` folder, a `components` folder, and minimal configuration.
 - No unnecessary boilerplate—grow your project as needed.
-
-### Single-File Components
-
-- Combine controller logic, view code, and data flow in one file.
-- Simplified structure for faster prototyping and easier maintenance.
 
 ### Components with Slots
 

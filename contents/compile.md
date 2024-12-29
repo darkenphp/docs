@@ -1,5 +1,24 @@
 # Compile Concept
 
+build process:
+
+<pre class="mermaid">
+flowchart TD
+ A[Original File] -->  B
+ B(Build Process) --> C & D
+ C[Compile]
+ D[Polyfill]
+</pre>
+
+invoke:
+
+<pre class="mermaid">
+flowchart TD
+ A[Invoke Component] -->  B
+ B[Polyfill] --> | render | C
+ C[Compiled File]
+</pre>
+
 To understand how Darken works, we need to understand the concept of compiling.
 
 All components (or pages, which are technically just components) use anonymous classes. This allows you to put logic into the class but also directly use it in the template.

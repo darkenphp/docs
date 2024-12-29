@@ -50,6 +50,7 @@ $layout = new class {
   <title><?= htmlspecialchars($layout->title); ?></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="./assets/output.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" integrity="sha256-pDvBr9RG+cTMZqxd1F0C6NZeJvxTROwO94f4jW3bb54=" crossorigin="anonymous"></script>
 </head>
 
 <body>
