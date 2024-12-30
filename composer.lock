@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/darkenphp/framework.git",
-                "reference": "3185c39e4349c9715f4b2027fa2185998225c150"
+                "reference": "be855cee2905b7c52a50956693b233ec0932879e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darkenphp/framework/zipball/3185c39e4349c9715f4b2027fa2185998225c150",
-                "reference": "3185c39e4349c9715f4b2027fa2185998225c150",
+                "url": "https://api.github.com/repos/darkenphp/framework/zipball/be855cee2905b7c52a50956693b233ec0932879e",
+                "reference": "be855cee2905b7c52a50956693b233ec0932879e",
                 "shasum": ""
             },
             "require": {
@@ -35,6 +35,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.65",
+                "phpbench/phpbench": "^1.3",
                 "phpstan/phpstan": "^2.0",
                 "phpunit/phpunit": "^11"
             },
@@ -60,7 +61,7 @@
                 "issues": "https://github.com/darkenphp/framework/issues",
                 "source": "https://github.com/darkenphp/framework/tree/main"
             },
-            "time": "2024-12-29T15:18:01+00:00"
+            "time": "2024-12-29T19:40:16+00:00"
         },
         {
             "name": "erusev/parsedown",

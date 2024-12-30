@@ -762,9 +762,9 @@ video {
   border-color: rgb(245 245 245 / var(--tw-border-opacity, 1));
 }
 
-.border-b-lightgrey {
+.border-b-darken {
   --tw-border-opacity: 1;
-  border-bottom-color: rgb(245 245 245 / var(--tw-border-opacity, 1));
+  border-bottom-color: rgb(18 18 18 / var(--tw-border-opacity, 1));
 }
 
 .bg-darken {
@@ -772,9 +772,9 @@ video {
   background-color: rgb(18 18 18 / var(--tw-bg-opacity, 1));
 }
 
-.bg-white {
+.bg-darkgrey {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  background-color: rgb(27 27 27 / var(--tw-bg-opacity, 1));
 }
 
 .p-2 {
@@ -857,11 +857,6 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
-.text-darken {
-  --tw-text-opacity: 1;
-  color: rgb(18 18 18 / var(--tw-text-opacity, 1));
-}
-
 .text-grey {
   --tw-text-opacity: 1;
   color: rgb(128 128 128 / var(--tw-text-opacity, 1));
@@ -936,7 +931,7 @@ video {
   line-height: 1.75rem;
   line-height: 1.375;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
 .md h3 {
@@ -945,7 +940,7 @@ video {
   line-height: 1.75rem;
   line-height: 1.375;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
 .md h4 {
@@ -953,7 +948,7 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
 /* Paragraphs & text */
@@ -963,7 +958,7 @@ video {
   font-size: 1.125rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(18 18 18 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
 .md strong {
@@ -1003,10 +998,10 @@ video {
 
 .md li {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   --tw-text-opacity: 1;
-  color: rgb(18 18 18 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
 /* Blockquotes */
@@ -1016,11 +1011,18 @@ video {
   margin-bottom: 1rem;
   border-left-width: 4px;
   --tw-border-opacity: 1;
-  border-color: rgb(128 128 128 / var(--tw-border-opacity, 1));
+  border-color: rgb(255 44 44 / var(--tw-border-opacity, 1));
   padding-left: 1rem;
   font-style: italic;
   --tw-text-opacity: 1;
-  color: rgb(18 18 18 / var(--tw-text-opacity, 1));
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+}
+
+.md blockquote p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 /* Images */

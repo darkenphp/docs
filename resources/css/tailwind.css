@@ -13,18 +13,18 @@
   @apply text-3xl text-primary mb-5 leading-tight font-bold;
 }
 .md h2 {
-  @apply text-xl text-black mb-5 leading-snug;
+  @apply text-xl text-lightgrey mb-5 leading-snug;
 }
 .md h3 {
-  @apply text-lg text-black mb-4 leading-snug;
+  @apply text-lg text-lightgrey mb-4 leading-snug;
 }
 .md h4 {
-  @apply text-xl  text-black mb-4;
+  @apply text-xl  text-lightgrey mb-4;
 }
 
 /* Paragraphs & text */
 .md p {
-  @apply text-lg text-darken mb-3;
+  @apply text-lg text-lightgrey mb-3;
 }
 .md strong {
   @apply font-bold;
@@ -49,12 +49,16 @@
   @apply list-decimal ml-6 mb-4;
 }
 .md li {
-  @apply text-base text-darken mb-2;
+  @apply text-lg text-lightgrey mb-2;
 }
 
 /* Blockquotes */
 .md blockquote {
-  @apply border-l-4 border-grey pl-4 italic text-darken my-4;
+  @apply border-l-4 border-primary pl-4 italic text-lightgrey my-4;
+}
+
+.md blockquote p {
+  @apply text-xl py-2;
 }
 
 

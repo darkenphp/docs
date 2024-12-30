@@ -20,6 +20,7 @@ $layout = new class {
   {
     return [
       'About' => '/',
+      'Motivation' => '/motivation',
       'Getting Started' => '/install',
       'Concepts' => null,
       'Build Compiler' => '/compile',
@@ -54,7 +55,7 @@ $layout = new class {
 </head>
 
 <body>
-  <div class="flex h-screen">
+  <div class="flex h-screen bg-darkgrey">
     <!-- Mobile menu toggle button -->
     <input type="checkbox" id="menu-toggle" class="hidden peer">
 
@@ -89,7 +90,7 @@ $layout = new class {
     <!-- Main content -->
     <div class="flex flex-col flex-1 overflow-y-auto">
       <!-- Sticky Header -->
-      <header class="sticky top-0 z-50 border-b border-b-lightgrey bg-white text-darken">
+      <header class="sticky top-0 z-50 border-b bg-darkgrey border-b-darken text-white">
         <div class="flex items-center justify-between py-3 px-4">
 
           <!-- Left Side: Breadcrumb + Mobile Menu Toggle -->

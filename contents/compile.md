@@ -3,6 +3,14 @@
 build process:
 
 <pre class="mermaid">
+sequenceDiagram
+    participant Original Code
+    participant Polyfil
+    participant Compiled Code
+    Original Code-->>Compiled Code: Compile Originla Code to Compiled Code
+</pre>
+
+<pre class="mermaid">
 flowchart TD
  A[Original File] -->  B
  B(Build Process) --> C & D
