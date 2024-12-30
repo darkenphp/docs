@@ -1039,7 +1039,7 @@ video {
 .md :not(pre) > code {
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(18 18 18 / var(--tw-bg-opacity, 1));
+  background-color: rgb(255 44 44 / var(--tw-bg-opacity, 1));
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   font-size: 0.875rem;
@@ -1054,6 +1054,8 @@ video {
   margin-bottom: 0.75rem;
   overflow: auto;
   border-radius: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .md pre>pre {

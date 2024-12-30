@@ -33,17 +33,6 @@ $page = new class {
 - Reusable components with slot functionality, inspired by Vue and Svelte.
 - Flexible content management directly in PHP.
 
-### Compiled, Not Dynamic
-
-- Code is precompiled for deployment, ensuring:
-- Faster production performance.
-- IDE-friendly workflows with autocompletion.
-
-### No Node.js Overhead
-
-- Skip `node_modules` entirely or use it minimally for CSS tools like Tailwind.
-- Embrace Composer for managing PHP dependencies cleanly.
-
 ### Streamlined Workflow
 
 - No jumping between config, controller, and view files—keep everything in one place.

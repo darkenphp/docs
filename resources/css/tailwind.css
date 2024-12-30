@@ -69,12 +69,12 @@
 
 /* Inline code */
 .md :not(pre) > code {
-  @apply bg-darken text-white px-1 rounded text-sm;
+  @apply bg-primary text-white px-1 rounded text-sm;
 }
 
 /* Code blocks */
 .md pre {
-  @apply mb-3 rounded-xl overflow-auto;
+  @apply mb-3 rounded-xl overflow-auto text-white;
 }
 
 .md pre>pre {
