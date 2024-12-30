@@ -81,6 +81,10 @@
   @apply p-4 text-sm;
 }
 
+.md pre.mermaid {
+  @apply p-4 text-sm bg-darken text-black;
+}
+
 
 /* Tables (if you use them) */
 .md table {

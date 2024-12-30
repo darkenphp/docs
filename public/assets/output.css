@@ -1064,6 +1064,16 @@ video {
   line-height: 1.25rem;
 }
 
+.md pre.mermaid {
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 18 18 / var(--tw-bg-opacity, 1));
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
 /* Tables (if you use them) */
 
 .md table {
