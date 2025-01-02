@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Darken\Config\BaseConfig;
 use Darken\Config\ConfigHelperTrait;
 use Darken\Config\ConfigInterface;
 use Darken\Debugbar\Build\Extension;
@@ -24,10 +25,8 @@ use Yiisoft\Files\FileHelper;
  * services for dependency injection. It uses environment variables to customize
  * various aspects of the application setup.
  */
-class Config implements ConfigInterface, ContainerServiceInterface, EventServiceInterface, ExtensionServiceInterface
+class Config extends BaseConfig implements ContainerServiceInterface, EventServiceInterface, ExtensionServiceInterface
 {
-    use ConfigHelperTrait;
-
     /**
      * Initialize the configuration class and load the environment file.
      */

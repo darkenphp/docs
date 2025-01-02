@@ -11,24 +11,16 @@ To create a new project, run the following command in your terminal. Replace `fo
 composer create-project darkenphp/app folder-name-to-create-app "dev-main"
 ```
 
-After the folder is created, navigate to the project directory you just created:
-
-1. **Start the Development Server:** Launch the development server with the following command:
-
+After the folder is created, navigate to the project directory you just created and launch the development server with the following command:
 
 ```bash
 composer dev
 ```
 
-2. **Access the Application:** Once the server is running, open your browser and navigate to:
+Once the server is running, open your browser and navigate to access the application:
 
-```
+```bash
 http://localhost:8009
 ```
 
 The development server supports **hot reloading**, automatically compiling your changes as you modify the source files.
-
-
-### Further reading
-
-- [Read to understand anything about the Compling](compile)

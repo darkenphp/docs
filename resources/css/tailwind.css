@@ -5,7 +5,7 @@
 
 /* Container styles for markdown content */
 .md-container {
-  @apply mx-auto max-w-3xl leading-relaxed;
+  @apply mx-auto container max-w-3xl;
 }
 
 /* Headings */
@@ -13,7 +13,7 @@
   @apply text-3xl text-primary mb-5 leading-tight font-bold;
 }
 .md h2 {
-  @apply text-xl text-lightgrey mb-5 leading-snug;
+  @apply text-2xl text-lightgrey mb-5 leading-snug;
 }
 .md h3 {
   @apply text-lg text-lightgrey mb-4 leading-snug;
@@ -26,11 +26,11 @@
 .md p {
   @apply text-lg text-lightgrey mb-3;
 }
-.md strong {
-  @apply font-bold;
-}
 .md em {
   @apply italic;
+}
+.md strong {
+  @apply font-semibold;
 }
 
 /* Links */
@@ -98,7 +98,6 @@
   @apply pt-0 mt-0 mb-0 pb-0 text-xl;
 }
 
-
 /* Images */
 .md img {
   @apply mx-auto my-4;
@@ -120,17 +119,5 @@
 
 .md pre.mermaid {
   @apply p-4 text-sm bg-darken text-black;
-}
-
-
-/* Tables (if you use them) */
-.md table {
-  @apply w-full table-auto border-collapse my-4;
-}
-.md th {
-  @apply border-b border-grey p-2 text-left font-bold bg-grey text-white;
-}
-.md td {
-  @apply border-b border-grey p-2 align-top;
 }
 

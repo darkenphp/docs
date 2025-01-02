@@ -49,9 +49,10 @@ $layout = (new Layout($page->slug))->openContent();
         <div class="md">
             <?= $page->getMarkdownContent(); ?>
         </div>
-    <?php else : ?>
-        <h1>404 - Page not found</h1>
-
-        <p><?= $page->getMarkdownFilePath(); ?></p>
+    <?php else: ?>
+        <div class="md">
+            <h1>404 - Page not found</h1>
+            <p><?= $page->getMarkdownFilePath(); ?></p>
+        </div>
     <?php endif; ?>
 <?= $layout->closeContent(); ?>

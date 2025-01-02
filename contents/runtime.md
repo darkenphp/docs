@@ -5,6 +5,9 @@ description: Extend the Compiler with a custom runtime.
 
 # Extend Compiler with Custom Runtime
 
+> [!IMPORTANT]
+> This is very conceptual and not fully implemented yet.
+
 One of the amazing things you can do when all files need to be compiled before running is hook into this compile process. This allows you to perform any sort of magic you want.
 
 A basic example is creating a custom runtime that will be compiled into the final output. This runtime can be used to perform any sort of magic you want.
