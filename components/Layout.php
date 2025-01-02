@@ -1,8 +1,8 @@
 <?php
 
 use Build\components\Menu;
-use Build\components\MenuMore;
-use Darken\Web\Request;
+use Darken\Code\Runtime;
+use Darken\Debugbar\DebugBarConfig;
 
 $layout = new class {
   #[\Darken\Attributes\ConstructorParam]
@@ -11,6 +11,11 @@ $layout = new class {
   #[\Darken\Attributes\Slot]
   public $content;
 
+  #[\Darken\Attributes\Inject]
+  public DebugBarConfig $debugBarConfig;
+
+  public Runtime $runtime;
+
   public function getYear(): int
   {
     return date('Y');
@@ -18,6 +23,8 @@ $layout = new class {
 
   public function nav(): array
   {
+    $this->debugBarConfig->message('Hello World');
+
     return [
       'About' => '/',
       'Motivation' => '/motivation',
@@ -39,6 +46,9 @@ $layout = new class {
       'Deplyoment' => null,
       'Vercel' => '/deploy',
       'FrankenPHP' => '/frankenphp',
+      'Developers' => null,
+      'Extensions' => '/extensions',
+      'Testing' => '/testing',
     ];
   }
 };

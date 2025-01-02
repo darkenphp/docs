@@ -2,6 +2,7 @@
     "type": "project",
     "require": {
         "darkenphp/framework": "dev-main",
+        "darkenphp/debugbar": "dev-main",
         "ext-json": "*",
         "erusev/parsedown": "^1.7"
     },

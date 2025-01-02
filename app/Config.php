@@ -4,11 +4,16 @@ namespace App;
 
 use Darken\Config\ConfigHelperTrait;
 use Darken\Config\ConfigInterface;
+use Darken\Debugbar\Build\Extension;
+use Darken\Debugbar\DebugBar;
+use Darken\Debugbar\DebugBarConfig;
 use Darken\Events\AfterBuildEvent;
 use Darken\Service\ContainerService;
 use Darken\Service\ContainerServiceInterface;
 use Darken\Service\EventService;
 use Darken\Service\EventServiceInterface;
+use Darken\Service\ExtensionService;
+use Darken\Service\ExtensionServiceInterface;
 use Yiisoft\Files\FileHelper;
 
 /**
@@ -18,7 +23,7 @@ use Yiisoft\Files\FileHelper;
  * services for dependency injection. It uses environment variables to customize
  * various aspects of the application setup.
  */
-class Config implements ConfigInterface, ContainerServiceInterface, EventServiceInterface
+class Config implements ConfigInterface, ContainerServiceInterface, EventServiceInterface, ExtensionServiceInterface
 {
     use ConfigHelperTrait;
 
@@ -28,6 +33,15 @@ class Config implements ConfigInterface, ContainerServiceInterface, EventService
     public function __construct(private readonly string $rootDirectoryPath)
     {
         $this->loadEnvFile();
+    }
+
+    public function extensions(ExtensionService $service): ExtensionService
+    {
+        if ($this->getDebugMode()) {
+            $service->register(new Extension(new DebugBarConfig()));
+        }
+        
+        return $service;
     }
 
     /**
