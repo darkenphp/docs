@@ -37,11 +37,15 @@ class Config implements ConfigInterface, ContainerServiceInterface, EventService
 
     public function extensions(ExtensionService $service): ExtensionService
     {
-        if ($this->getDebugMode()) {
-            $service->register(new Extension(new DebugBarConfig()));
-        }
-        
-        return $service;
+        $debugbarConfig = (new DebugBarConfig(
+                isActive: $this->getDebugMode()
+            ))
+            ->config($this);
+
+        $debugbar = new Extension($debugbarConfig);
+
+        return $service
+            ->register($debugbar);
     }
 
     /**

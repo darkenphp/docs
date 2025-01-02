@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/darkenphp/ext-debugbar.git",
-                "reference": "b91b6f0d3e789c65c31a628da7920fa9c9326f61"
+                "reference": "694acb321ce486f281e02f836ddc78071f90b5f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darkenphp/ext-debugbar/zipball/b91b6f0d3e789c65c31a628da7920fa9c9326f61",
-                "reference": "b91b6f0d3e789c65c31a628da7920fa9c9326f61",
+                "url": "https://api.github.com/repos/darkenphp/ext-debugbar/zipball/694acb321ce486f281e02f836ddc78071f90b5f2",
+                "reference": "694acb321ce486f281e02f836ddc78071f90b5f2",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
                 "issues": "https://github.com/darkenphp/ext-debugbar/issues",
                 "source": "https://github.com/darkenphp/ext-debugbar/tree/main"
             },
-            "time": "2025-01-02T16:31:13+00:00"
+            "time": "2025-01-02T18:00:58+00:00"
         },
         {
             "name": "darkenphp/framework",
