@@ -192,11 +192,9 @@ $layout = new class {
           </div>
         </div>
       </header>
-      <div class="container mx-auto">
-        <div class="p-4 my-4 md">
+        <div class="p-4 my-4 md-container">
           <?= $layout->content; ?>
         </div>
-      </div>
     </div>
   </div>
 

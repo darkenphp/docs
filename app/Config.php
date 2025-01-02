@@ -14,6 +14,7 @@ use Darken\Service\EventService;
 use Darken\Service\EventServiceInterface;
 use Darken\Service\ExtensionService;
 use Darken\Service\ExtensionServiceInterface;
+use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Files\FileHelper;
 
 /**
@@ -73,9 +74,16 @@ class Config implements ConfigInterface, ContainerServiceInterface, EventService
             $files = FileHelper::findFiles($this->getRootDirectoryPath() . DIRECTORY_SEPARATOR . 'contents', ['only' => ['*.md']]);
             $json = [];
             foreach ($files as $markdown) {
+                $text = file_get_contents($markdown);
+                
+                $md = new Markdown();
+                $r = $md->toResult($text);
+                $cfg = $md->getFrontMatter($r);
                 $json[] = [
-                    'content' => file_get_contents($markdown),
+                    'content' => $text,
                     'href' => pathinfo($markdown, PATHINFO_FILENAME),
+                    'title' => ArrayHelper::getValue($cfg, 'title', ''),
+                    'description' => ArrayHelper::getValue($cfg, 'description', ''),
                 ];
             }
 

@@ -1,3 +1,8 @@
+---
+title: Deploy
+description: Deploy your Darken PHP project to Vercel.
+---
+
 # Deploy to Vercel
 
 ## Deploy Your Project App with a Single Click on Vercel

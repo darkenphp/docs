@@ -1,3 +1,8 @@
+---
+title: Motivation
+description: Why Darken PHP was created.
+---
+
 Why yet another Framework?
 
 > There are already so many great frameworks in different languages; why is there a need for another one?

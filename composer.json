@@ -4,7 +4,9 @@
         "darkenphp/framework": "dev-main",
         "darkenphp/debugbar": "dev-main",
         "ext-json": "*",
-        "erusev/parsedown": "^1.7"
+        "league/commonmark": "^2.6",
+        "symfony/yaml": "^7.2",
+        "zenstruck/commonmark-extensions" : "1.x-dev"
     },
     "autoload": {
         "psr-4": {

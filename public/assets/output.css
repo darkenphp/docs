@@ -616,11 +616,6 @@ video {
   z-index: 50;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -757,6 +752,10 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-none {
+  border-style: none;
+}
+
 .border-lightgrey {
   --tw-border-opacity: 1;
   border-color: rgb(245 245 245 / var(--tw-border-opacity, 1));
@@ -818,6 +817,11 @@ video {
   padding-right: 2.5rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -872,6 +876,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.no-underline {
+  text-decoration-line: none;
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -906,7 +914,7 @@ video {
 
 /* Container styles for markdown content */
 
-.md {
+.md-container {
   margin-left: auto;
   margin-right: auto;
   max-width: 48rem;
@@ -1004,23 +1012,86 @@ video {
   color: rgb(245 245 245 / var(--tw-text-opacity, 1));
 }
 
-/* Blockquotes */
+/* Admonitions */
 
 .md blockquote {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border-left-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: rgb(255 44 44 / var(--tw-border-opacity, 1));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: 1rem;
   font-style: italic;
   --tw-text-opacity: 1;
-  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+  color: rgb(128 128 128 / var(--tw-text-opacity, 1));
 }
 
 .md blockquote p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* Normal Blockquotes */
+
+.md blockquote:not(.md-admonition) {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(128 128 128 / var(--tw-border-opacity, 1));
+}
+
+/* Admonition Blockquotes */
+
+.md blockquote.md-admonition {
+  border-left-width: 4px;
+  padding-left: 1rem;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* Specific Admonition Types */
+
+/* Note Admonition */
+
+.md blockquote.md-admonition.md-admonition-note {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 255 / var(--tw-border-opacity, 1));
+}
+
+/* Important Admonition */
+
+.md blockquote.md-admonition.md-admonition-important {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 0 0 / var(--tw-border-opacity, 1));
+}
+
+/* Warning Admonition */
+
+.md blockquote.md-admonition.md-admonition-warning {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 0 / var(--tw-border-opacity, 1));
+}
+
+/* Admonition Labels */
+
+.md blockquote.md-admonition .md-admonition-label {
+  margin-bottom: 0.25rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Admonition Content */
+
+.md blockquote.md-admonition p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
@@ -1105,6 +1176,10 @@ video {
   vertical-align: top;
 }
 
+.hover\:rounded-lg:hover {
+  border-radius: 0.5rem;
+}
+
 .hover\:bg-primary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 44 44 / var(--tw-bg-opacity, 1));
@@ -1134,6 +1209,11 @@ video {
 .focus\:ring-grey:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(128 128 128 / var(--tw-ring-opacity, 1));
+}
+
+.group:hover .group-hover\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .peer:checked ~ .peer-checked\:flex {

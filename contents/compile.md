@@ -1,3 +1,8 @@
+---
+title: Compile
+description: How Darken PHP compiles your code.
+---
+
 # Compile Concept
 
 build process:

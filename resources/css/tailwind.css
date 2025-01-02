@@ -4,7 +4,7 @@
 
 
 /* Container styles for markdown content */
-.md {
+.md-container {
   @apply mx-auto max-w-3xl leading-relaxed;
 }
 
@@ -52,13 +52,50 @@
   @apply text-lg text-lightgrey mb-2;
 }
 
-/* Blockquotes */
+/* Admonitions */
 .md blockquote {
-  @apply border-l-4 border-primary pl-4 italic text-lightgrey my-4;
+  @apply pl-4 italic text-grey my-4 py-2;
 }
 
 .md blockquote p {
-  @apply text-xl py-2;
+  @apply pt-0 mt-0 mb-0 pb-0;
+}
+
+/* Normal Blockquotes */
+.md blockquote:not(.md-admonition) {
+  @apply border-l-4 border-grey;
+}
+
+/* Admonition Blockquotes */
+.md blockquote.md-admonition {
+  @apply border-l-4 pl-4 shadow-none;
+}
+
+/* Specific Admonition Types */
+
+/* Note Admonition */
+.md blockquote.md-admonition.md-admonition-note {
+  @apply border-blue;
+}
+
+/* Important Admonition */
+.md blockquote.md-admonition.md-admonition-important {
+  @apply border-red;
+}
+
+/* Warning Admonition */
+.md blockquote.md-admonition.md-admonition-warning {
+  @apply border-yellow;
+}
+
+/* Admonition Labels */
+.md blockquote.md-admonition .md-admonition-label {
+  @apply font-semibold pt-2 mb-1 pb-0 text-sm not-italic;
+}
+
+/* Admonition Content */
+.md blockquote.md-admonition p {
+  @apply pt-0 mt-0 mb-0 pb-0 text-xl;
 }
 
 

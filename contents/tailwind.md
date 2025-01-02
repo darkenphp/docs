@@ -1,3 +1,7 @@
+---
+title: Tailwind
+description: Get started with Tailwind CSS.
+---
 # Tailwind
 
 ## 1. Install Tailwind 

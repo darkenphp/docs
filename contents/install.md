@@ -1,3 +1,8 @@
+---
+title: Installation
+description: Get started with Darken PHP.
+---
+
 # Getting started
 
 To create a new project, run the following command in your terminal. Replace `folder-name-to-create-app` with the desired folder name:

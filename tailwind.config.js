@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./app/**/*.{html,js,php}",
+    "./pages/**/*.{html,js,php}",
     "./components/**/*.{html,js,php}",
   ],
   theme: {
@@ -13,6 +14,9 @@ module.exports = {
       darkgrey: '#1b1b1b',
       white: 'white',
       black: 'black',
+      blue: 'blue',
+      red: 'red',
+      yellow: 'yellow',
     },
     extend: {},
   },

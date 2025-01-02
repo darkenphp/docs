@@ -1,3 +1,8 @@
+---
+title: Runtime
+description: Extend the Compiler with a custom runtime.
+---
+
 # Extend Compiler with Custom Runtime
 
 One of the amazing things you can do when all files need to be compiled before running is hook into this compile process. This allows you to perform any sort of magic you want.

@@ -1,3 +1,8 @@
+---
+title: Events
+description: Events in Darken PHP.
+---
+
 # Events
 
 There are several events which can be listeneed to, for example you can add your own build commands after build command was run:

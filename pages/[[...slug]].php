@@ -1,9 +1,16 @@
 <?php
 
 use App\Config;
+use App\Markdown;
 use Build\components\Layout;
 use Darken\Attributes\Inject;
 use Darken\Attributes\RouteParam;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
+use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
+use League\CommonMark\MarkdownConverter;
 
 $page = new class {
     #[RouteParam]
@@ -16,8 +23,9 @@ $page = new class {
     {
         $text = file_get_contents($this->getMarkdownFilePath());
 
-        $parsedown = new Parsedown();
-        return $parsedown->text($text);
+        $markdown = new Markdown();
+
+        return $markdown->toResult($text)->getContent();
     }
 
     public function hasMarkdownFile()
@@ -38,7 +46,9 @@ $page = new class {
 $layout = (new Layout($page->slug))->openContent();
 ?>
     <?php if ($page->hasMarkdownFile()) : ?>
-        <?= $page->getMarkdownContent(); ?>
+        <div class="md">
+            <?= $page->getMarkdownContent(); ?>
+        </div>
     <?php else : ?>
         <h1>404 - Page not found</h1>
 

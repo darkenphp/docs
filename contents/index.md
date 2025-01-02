@@ -1,4 +1,13 @@
+---
+title: Darken PHP
+description: A lightweight PHP framework with a single-file component approach.
+---
+
+
 # A Framework with a Twist
+
+> [!IMPORTANT]
+> This is a work in progress and not yet ready for production use.
 
 Darken PHP merges the best of frameworks like Nuxt.js and Astro into a PHP-based system without the overhead of Node.js dependencies. It’s designed for simplicity, efficiency, and minimalism, offering a unique single-file component approach.
 
