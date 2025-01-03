@@ -2,6 +2,7 @@
 
 use App\Config;
 use Build\components\Api;
+use Build\components\ApiTab;
 use Darken\Attributes\Inject;
 use Darken\Attributes\RouteParam;
 
@@ -44,139 +45,100 @@ $api = new class {
 </div>
 
 <?php if (count($api->data->properties) > 0) : ?>
-<h2 class="mt-7 text-3xl text-white mb-2">Properties</h2>
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-grey rounded-lg">
-        <thead class="text-xsuppercase bg-darken">
-            <tr>
-                <th scope="col" class="text-left py-2 pl-2">
-                    Property
-                </th>
-                <th class="text-left">
-                    Type
-                </th>
-                <th class="text-left">
-                    Description
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($api->data->properties as $property) : ?>
-            <tr class="bg-darkgrey border-b border-b-darken">
-                <th scope="row" class="font-medium text-left py-2 pl-2">
-                    <a href="#<?= $property->name; ?>">$<?= $property->name; ?></a>
-                </th>
-                <td class="text-left">
-                    <?= $property->type; ?>
-                </td>
-                <td class="text-left">
-                    <?= $property->description; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
-<?php endif; ?>
-
-<?php if (count($api->data->methods) > 0) : ?>
-<h2 class="mt-7 text-3xl text-white mb-2">Methods</h2>
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-grey rounded-lg">
-        <thead class="text-xs uppercase bg-darken">
-            <tr>
-                <th scope="col" class="text-left py-2 pl-2">
-                    Method
-                </th>
-                <th class="text-left">
-                    Description
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($api->data->methods as $method) : ?>
-            <tr class="bg-darkgrey border-b border-b-darken">
-                <th scope="row" class="font-medium text-left py-2 pl-2">
-                    <a href="#<?= $method->name; ?>"><?= $method->name; ?>(<?= $method->parametersString; ?>)</a>
-                </th>
-                <td class="text-left">
-                    <?= $method->description; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
-<?php endif; ?>
-
-<?php if (count($api->data->properties) > 0) : ?>
-<h2 class="mt-7 text-3xl text-white mb-2">Property Details</h2>
-<div>
-    <?php foreach ($api->data->properties as $property) : ?>
-        <div id="<?= $property->name; ?>" class="bg-darken text-white p-4 rounded-lg mb-4">
-            <div>
-                <span class="text-xl font-bold">$<?= $property->name; ?></span>
-                <span><?= $property->visibility; ?></span>
-                <span>property</span>
-            </div>
-            <?php if (!empty($property->description)) : ?>
-            <div class="md">
-                <?= $property->description; ?>
-            </div>
-            <?php endif; ?>
-            <div>
-                <?= $property->visibility; ?>
-                <p><?= $property->static ? '<p>Static</p>' : ''; ?></p>
-                <?= $property->type; ?>
-                $<?= $property->name; ?> = <?= $property->default; ?>
-            </div>
+    <h3 class="mt-8 mb-4 text-xl text-white">Properties</h2>
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-grey rounded-lg">
+                <tbody>
+                    <?php foreach ($api->data->properties as $property) : ?>
+                        <tr class="bg-darkgrey border-b border-b-darken">
+                            <th scope="row" class="font-medium text-left py-2 pl-2">
+                                <a href="#<?= $property->name; ?>">$<?= $property->name; ?></a>
+                            </th>
+                            <td class="text-left">
+                                <?= $property->type; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-    <?php endforeach; ?>
-</div>
-<?php endif; ?>
+    <?php endif; ?>
 
-<?php if (count($api->data->methods) > 0) : ?>
-<h2 class="mt-7 text-3xl text-white mb-2">Method Detais</h2>
-<div>
-    <?php foreach ($api->data->methods as $method) : ?>
-        <div id="<?= $method->name; ?>" class="bg-darken text-white p-4 rounded-lg mb-4">
-            <div>
-                <span class="text-xl font-bold"><?= $method->name; ?>()</span>
-                <span><?= $method->visibility; ?></span>
-                <span>method</span>
-            </div>
-            <?php if (!empty($method->description)) : ?>
-            <div class="md">
-                <?= $method->description; ?>
-            </div>
-            <?php endif; ?>
-            <div>
-                <?= $method->visibility; ?>
-                <?= $method->static ? '<p>Static</p>' : ''; ?>
-                <?= $method->name; ?>(<?= $method->parametersString; ?>)
-            </div>
-            <div>
+    <?php if (count($api->data->methods) > 0) : ?>
+        <h3 class="mt-8 mb-4  text-xl text-white">Methods</h2>
+            <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-grey rounded-lg">
                     <tbody>
-                        <?php foreach ($method->parameters as $parameter) : ?>
-                            <tr>
-                                <td><?= $parameter->name; ?></td>
-                                <td><?= $parameter->type; ?></td>
+                        <?php foreach ($api->data->methods as $method) : ?>
+                            <tr class="bg-darkgrey border-b border-b-darken">
+                                <th scope="row" class="font-medium text-left py-2 pl-2">
+                                    <a href="#<?= $method->name; ?>"><?= $method->name; ?>(<?= $method->parametersString; ?>)</a>
+                                </th>
                             </tr>
                         <?php endforeach; ?>
-                        <tr>
-                            <td>Return</td>
-                            <td><?= $method->returnType; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Throws</td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
-<?php endif; ?>
-<?= $layout->closeContent(); ?>
+        <?php endif; ?>
+
+        <?php if (count($api->data->properties) > 0) : ?>
+            <h2 class="mt-8 mb-4  text-xl text-white">Property Details</h2>
+            <div>
+                <?php foreach ($api->data->properties as $property) : ?>
+                    <?php $tab = (new ApiTab('$' . $property->name, $property->name, $property->visibility))->openSlot(); ?>
+                    <?php if (!empty($property->description)) : ?>
+                        <div class="md">
+                            <?= $property->description; ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="text-lg">
+                        <?= $property->visibility; ?>
+                        <?= $property->static ? '<p>Static</p>' : ''; ?>
+                        <?= $property->type; ?>
+                        $<?= $property->name; ?> = <?= $property->default; ?>;
+                    </div>
+                    <?= $tab->closeSlot(); ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (count($api->data->methods) > 0) : ?>
+            <h2 class="mt-8 mb-4 text-xl text-white">Method Detais</h2>
+            <div>
+                <?php foreach ($api->data->methods as $method) : ?>
+                    <?php $tab = (new ApiTab($method->name . '()', $method->name, $method->visibility))->openSlot(); ?>
+                    <?php if (!empty($method->description)) : ?>
+                        <div class="md">
+                            <?= $method->description; ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="lg">
+                        <?= $method->visibility; ?>
+                        <?= $method->static ? '<p>Static</p>' : ''; ?>
+                        <?= $method->name; ?>(<?= $method->parametersString; ?>)
+                    </div>
+                    <div class="mt-3">
+                        <table class="w-full text-sm text-grey rounded-lg">
+                            <tbody>
+                                <?php foreach ($method->parameters as $parameter) : ?>
+                                    <tr>
+                                        <td class="py-2"><?= $parameter->name; ?></td>
+                                        <td class="text-white font-bold"><?= $parameter->type; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                <tr>
+                                    <td class="py-2" style="width:140px">Return</td>
+                                    <td class="text-white font-bold"><?= $method->returnType; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">Throws</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?= $tab->closeSlot(); ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <?= $layout->closeContent(); ?>

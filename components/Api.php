@@ -33,6 +33,6 @@ $api = new class {
     
 };
 
-$layout = (new Layout($api->title, $api->getNavigation()))->openContent(); ?>
+$layout = (new Layout($api->title, $api->getNavigation(), true))->openContent(); ?>
   <?= $api->content; ?>
 <?= $layout->closeContent(); ?>

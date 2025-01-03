@@ -8,6 +8,10 @@
   @apply mx-auto container max-w-3xl;
 }
 
+.md-container-large {
+  @apply mx-auto container max-w-5xl;
+}
+
 /* Headings */
 .md h1 {
   @apply text-3xl text-primary mb-5 leading-tight font-bold;

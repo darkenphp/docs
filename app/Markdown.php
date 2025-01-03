@@ -24,6 +24,7 @@ class Markdown
          $environment->addExtension(new FrontMatterExtension());
          $environment->addExtension(new AdmonitionExtension());
 
+         $environment->addInlineParser(new ApiLinkParser());
  
          $converter = new MarkdownConverter($environment);
 

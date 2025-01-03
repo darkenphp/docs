@@ -1,6 +1,7 @@
 <?php
 
 use Build\components\Menu;
+use Darken\Attributes\ConstructorParam;
 use Darken\Code\Runtime;
 use Darken\Debugbar\DebugBarConfig;
 
@@ -17,12 +18,13 @@ $layout = new class {
   #[\Darken\Attributes\Inject]
   public DebugBarConfig $debugBarConfig;
 
-  public Runtime $runtime;
-
   public function getYear(): int
   {
     return date('Y');
   }
+
+  #[ConstructorParam()]
+  public bool $isLarge = false;
 };
 ?>
 <!DOCTYPE html>
@@ -167,7 +169,7 @@ $layout = new class {
           </div>
         </div>
       </header>
-        <div class="p-4 my-4 md-container">
+        <div class="p-4 my-4 <?php if ($layout->isLarge) : ?>md-container-large<?php else: ?>md-container<?php endif; ?>">
           <?= $layout->content; ?>
         </div>
     </div>
