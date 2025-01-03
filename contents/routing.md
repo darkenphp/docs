@@ -5,7 +5,7 @@ description: Define routes and handle requests.
 
 # Enable Pages
 
-Routing is only available if you have `pages`. Pages are components that are rendered as full pages using PSR-7 HTTP request and response objects, which can be intercepted by a middleware stack. In order to enable routing, your configuration must implement the `Darken\Config\PagesConfigInterface` which at the same time defines the folder where your pages are located.
+Routing is only available if you have `pages`. Pages are components that are rendered as full pages using PSR-7 HTTP request and response objects, which can be intercepted by a middleware stack. In order to enable routing, your configuration must implement the @(Darken\Config\PagesConfigInterface) which at the same time defines the folder where your pages are located.
 
 ## Routing
 
@@ -17,7 +17,7 @@ The `index.php` file in the `pages` folder is the home page. So if you add a `in
 
 ## Route Parameters
 
-The routing system also supports route parameters, those are declared with `[[` and `]]` in the file name. For example, if you create a file `hello-[[name]].php` in the `pages` folder, you can access it via `http://localhost:8009/hello-world`. This also works with folders, so if you create a folder `about` in the `pages` folder and add a `[[name]].php` file in it, you can access it via `http://localhost:8009/about/darken`. Those route paramters can the be retrieve with the `Darken\Attributes\RouteParam` attribute.
+The routing system also supports route parameters, those are declared with `[[` and `]]` in the file name. For example, if you create a file `hello-[[name]].php` in the `pages` folder, you can access it via `http://localhost:8009/hello-world`. This also works with folders, so if you create a folder `about` in the `pages` folder and add a `[[name]].php` file in it, you can access it via `http://localhost:8009/about/darken`. Those route paramters can the be retrieve with the @(Darken\Attributes\RouteParam) attribute.
 
 ```php
 <?php

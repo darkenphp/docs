@@ -7,7 +7,7 @@ description: Events in Darken PHP.
 
 There are several events which can be listeneed to, for example you can add your own build commands after build command was run:
 
-Add to your config: `Darken\Service\EventServiceInterface` and use the `on` method to listen to events.
+Add to your config: @(Darken\Service\EventServiceInterface) and use the `on` method to listen to events.
 
 ```php
 public function events(EventService $service): EventService

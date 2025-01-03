@@ -14,21 +14,21 @@
 
 /* Headings */
 .md h1 {
-  @apply text-3xl text-primary mb-5 leading-tight font-bold;
+  @apply text-3xl text-primary mb-3 leading-tight font-bold;
 }
 .md h2 {
-  @apply text-2xl text-lightgrey mb-5 leading-snug;
+  @apply text-2xl text-lightgrey mb-2 pt-3 leading-snug;
 }
 .md h3 {
-  @apply text-lg text-lightgrey mb-4 leading-snug;
+  @apply text-lg text-lightgrey mb-2 pt-2 leading-snug;
 }
 .md h4 {
-  @apply text-xl  text-lightgrey mb-4;
+  @apply text-xl  text-lightgrey mb-2 pt-2;
 }
 
 /* Paragraphs & text */
 .md p {
-  @apply text-lg text-lightgrey mb-3;
+  @apply text-lg text-lightgrey mb-4;
 }
 .md em {
   @apply italic;
