@@ -5,15 +5,21 @@ description: How Darken PHP compiles your code.
 
 # Compile Concept
 
-build process:
+> [!IMPORTANT]
+> This section is under heavy development and will be updated soon.
+
+Darken PHP compiles your code into a polyfill and a compiled file. The polyfill is a namespaced file that loads the compiled file and renders it. The compiled file contains your original code but with some modifications to make it work with the polyfill.
 
 <pre class="mermaid">
 sequenceDiagram
     participant Original Code
-    participant Polyfil
     participant Compiled Code
-    Original Code-->>Compiled Code: Compile Originla Code to Compiled Code
+    participant Polyfill
+    Original Code-->>Compiled Code: Compile Original Code
+    Compiled Code-->>Polyfill: Inlclude Compiled Code in Polyfill
 </pre>
+
+This is what the compile process looks like:
 
 <pre class="mermaid">
 flowchart TD
@@ -23,11 +29,11 @@ flowchart TD
  D[Polyfill]
 </pre>
 
-invoke:
+The runtime is loaded in the polyfill, and the compiled file is rendered by the polyfill. This is what the process looks like:
 
 <pre class="mermaid">
 flowchart TD
- A[Invoke Component] -->  B
+ A[Runtime] -->  B
  B[Polyfill] --> | render | C
  C[Compiled File]
 </pre>

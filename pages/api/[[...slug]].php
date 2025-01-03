@@ -37,10 +37,11 @@ $api = new class {
 };
 
 ?>
-<?php $layout = (new Api($api->data->className))->openContent(); ?>
+<?php $layout = (new Api($api->data->name))->openContent(); ?>
 <div class="md">
-    <h1><?= $api->data->className; ?></h1>
-    <p><?= $api->data->classPhpDocDescription; ?></p>
+    <h1><?= $api->data->name; ?></h1>
+    <p><?= $api->data->type; ?></p>
+    <p><?= $api->data->description; ?></p>
     <p><a target="_blank" href="<?= $api->data->github; ?>">View Source</a></p>
 </div>
 

@@ -25,7 +25,7 @@ $api = new class {
         
         $nav = [];
         foreach ($files as $file) {
-            $nav[$file['class']] = '/api/'.$file['slugify'];
+            $nav[$file['title']] = '/api/'.$file['slugify'];
         }
 
         return $nav;
