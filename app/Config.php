@@ -69,25 +69,27 @@ class Config extends BaseConfig implements ContainerServiceInterface, EventServi
 
     public function events(EventService $service): EventService
     {
-        return $service->on(AfterBuildEvent::class, function() {
-            $files = FileHelper::findFiles($this->getRootDirectoryPath() . DIRECTORY_SEPARATOR . 'contents', ['only' => ['*.md']]);
-            $json = [];
-            foreach ($files as $markdown) {
-                $text = file_get_contents($markdown);
-                
-                $md = new Markdown();
-                $r = $md->toResult($text);
-                $cfg = $md->getFrontMatter($r);
-                $json[] = [
-                    'content' => $text,
-                    'href' => pathinfo($markdown, PATHINFO_FILENAME),
-                    'title' => ArrayHelper::getValue($cfg, 'title', ''),
-                    'description' => ArrayHelper::getValue($cfg, 'description', ''),
-                ];
-            }
+        return $service
+            ->on(AfterBuildEvent::class, function() {
+                $files = FileHelper::findFiles($this->getRootDirectoryPath() . DIRECTORY_SEPARATOR . 'contents', ['only' => ['*.md']]);
+                $json = [];
+                foreach ($files as $markdown) {
+                    $text = file_get_contents($markdown);
+                    
+                    $md = new Markdown();
+                    $r = $md->toResult($text);
+                    $cfg = $md->getFrontMatter($r);
+                    $json[] = [
+                        'content' => $text,
+                        'href' => pathinfo($markdown, PATHINFO_FILENAME),
+                        'title' => ArrayHelper::getValue($cfg, 'title', ''),
+                        'description' => ArrayHelper::getValue($cfg, 'description', ''),
+                    ];
+                }
 
-            file_put_contents($this->getContentsFilePath(), json_encode($json));
-        });
+                file_put_contents($this->getContentsFilePath(), json_encode($json));
+            })
+            ->on(AfterBuildEvent::class, [PhpDocsGenerator::class]);
     }
 
     /**

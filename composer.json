@@ -6,7 +6,8 @@
         "ext-json": "*",
         "league/commonmark": "^2.6",
         "symfony/yaml": "^7.2",
-        "zenstruck/commonmark-extensions" : "1.x-dev"
+        "zenstruck/commonmark-extensions" : "1.x-dev",
+        "phpdocumentor/reflection-docblock": "^5.6"
     },
     "autoload": {
         "psr-4": {

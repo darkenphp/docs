@@ -2,7 +2,7 @@
 
 use App\Config;
 use App\Markdown;
-use Build\components\Layout;
+use Build\components\Guide;
 use Darken\Attributes\Inject;
 use Darken\Attributes\RouteParam;
 use League\CommonMark\CommonMarkConverter;
@@ -43,7 +43,7 @@ $page = new class {
         return $this->config->getRootDirectoryPath() . DIRECTORY_SEPARATOR . "contents/{$page}.md";
     }
 };
-$layout = (new Layout($page->slug))->openContent();
+$layout = (new Guide($page->slug))->openContent();
 ?>
     <?php if ($page->hasMarkdownFile()) : ?>
         <div class="md">

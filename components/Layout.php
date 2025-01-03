@@ -8,6 +8,9 @@ $layout = new class {
   #[\Darken\Attributes\ConstructorParam]
   public $title;
 
+  #[\Darken\Attributes\ConstructorParam]
+  public array $nav;
+
   #[\Darken\Attributes\Slot]
   public $content;
 
@@ -20,38 +23,6 @@ $layout = new class {
   {
     return date('Y');
   }
-
-  public function nav(): array
-  {
-    $this->debugBarConfig->message('Hello World');
-
-    return [
-      'About' => '/',
-      'Motivation' => '/motivation',
-      'Getting Started' => '/install',
-      'Concepts' => null,
-      'Build Compiler' => '/compile',
-      'Extend Runtime' => '/runtime',
-      'Containers' => '/containers',
-      'Application' => null,
-      'Config' => '/config',
-      'Routing' => '/routing',
-      'Middleware' => '/middleware',
-      'Dependency Injection' => '/di',
-      'APIs' => 'apis',
-      'Events' => '/events',
-      'Frontend' => null,
-      'Components' => '/components',
-      'Layouts' => '/layouts',
-      'Tailwind' => '/tailwind',
-      'Deplyoment' => null,
-      'Vercel' => '/deploy',
-      'FrankenPHP' => '/frankenphp',
-      'Developers' => null,
-      'Extensions' => '/extensions',
-      'Testing' => '/testing',
-    ];
-  }
 };
 ?>
 <!DOCTYPE html>
@@ -61,7 +32,7 @@ $layout = new class {
   <meta charset="UTF-8">
   <title><?= htmlspecialchars($layout->title); ?></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="./assets/output.css" rel="stylesheet">
+  <link href="/assets/output.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" integrity="sha256-pDvBr9RG+cTMZqxd1F0C6NZeJvxTROwO94f4jW3bb54=" crossorigin="anonymous"></script>
 </head>
 
@@ -91,7 +62,7 @@ $layout = new class {
       </a>
       <div class="flex flex-col flex-1 overflow-y-auto">
         <nav class="flex-1 px-2">
-          <?php foreach ($layout->nav() as $name => $url) : ?>
+          <?php foreach ($layout->nav as $name => $url) : ?>
             <?= new Menu($name, $url) ?>
           <?php endforeach; ?>
         </nav>

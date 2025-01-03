@@ -1,7 +1,7 @@
 <?php
 
 use App\Config;
-use Build\components\Layout;
+use Build\components\Guide;
 use Darken\Attributes\Inject;
 use Darken\Attributes\QueryParam;
 use Darken\Debugbar\DebugBarConfig;
@@ -35,7 +35,7 @@ $search = new class {
     }
 };
 
-$layout = (new Layout('Search'))->openContent();
+$layout = (new Guide('Search'))->openContent();
 ?>
 <div class="md p-2">
     <h1>Search</h1>
