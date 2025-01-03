@@ -16,7 +16,7 @@ $api = new class {
 ?>
 <?php $layout = (new Api('API'))->openContent(); ?>
 <div class="md">
-    <h1>API</h1>
+    <h1>Darken Class Reference API</h1>
 
     <?php foreach ($api->getIndex() as $index) : ?>
         <a class="mb-2 p-2 text-sm text-white bg-darken rounded-lg block no-underline border-0" href="/api/<?= $index['slugify']; ?>"><?= $index['class']; ?></a>

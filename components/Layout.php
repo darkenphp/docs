@@ -27,7 +27,6 @@ $layout = new class {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title><?= htmlspecialchars($layout->title); ?></title>
@@ -35,7 +34,6 @@ $layout = new class {
   <link href="/assets/output.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" integrity="sha256-pDvBr9RG+cTMZqxd1F0C6NZeJvxTROwO94f4jW3bb54=" crossorigin="anonymous"></script>
 </head>
-
 <body>
   <div class="flex h-screen bg-darkgrey">
     <!-- Mobile menu toggle button -->
@@ -92,6 +90,11 @@ $layout = new class {
                   d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </label>
+
+            <div>
+            <a href="/" class="text-xs border-grey border rounded-lg py-1 px-2 mr-1">Guide</a>
+            <a href="/api" class="text-xs border-grey border rounded-lg py-1 px-2">API</a>
+            </div>
           </div>
           <!-- Center: Search Bar (hidden on small screens) -->
           <div class="hidden md:flex flex-1 justify-center px-4">
