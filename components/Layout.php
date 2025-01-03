@@ -41,7 +41,7 @@ $layout = new class {
 
     <!-- Sidebar -->
     <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
-      <a href="/" class="flex items-center justify-between h-16 px-6">
+      <a href="/" class="flex items-center justify-between h-16 px-6 mt-1">
         <span class="text-white font-extralight uppercase">Darken Docs</span>
         <label for="menu-toggle" class="text-white cursor-pointer">
           <svg
@@ -109,19 +109,18 @@ $layout = new class {
                 class="absolute top-1/2 right-3 -translate-y-1/2 text-grey hover:text-white"
                 aria-label="Search">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 21l-4.35-4.35m0 0A7.481 7.481 0 014 10.25a7.48 7.48 0 014.35-6.5 
-                          7.48 7.48 0 016.5 4.35 7.48 7.48 0 010 9 
-                          7.48 7.48 0 01-6.5 4.35z" />
-                </svg>
+  xmlns="http://www.w3.org/2000/svg"
+  class="h-5 w-5 text-gray-600"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+>
+  <path
+    fill-rule="evenodd"
+    d="M12.9 14.32a8 8 0 111.414-1.414l4.385 4.385a1 1 0 01-1.414 1.414l-4.385-4.385zM14 8a6 6 0 11-12 0 6 6 0 0112 0z"
+    clip-rule="evenodd"
+  />
+</svg>
+
               </button>
             </form>
           </div>
@@ -130,6 +129,7 @@ $layout = new class {
           <div class="flex items-center space-x-4">
             <a
               href="https://github.com/darkenphp/framework"
+              target="_blank"
               class="flex items-center space-x-1 hover:text-grey">
               <!-- GitHub Icon -->
               <svg
