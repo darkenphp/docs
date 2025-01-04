@@ -70,25 +70,7 @@ class Config extends BaseConfig implements ContainerServiceInterface, EventServi
     public function events(EventService $service): EventService
     {
         return $service
-            ->on(AfterBuildEvent::class, function() {
-                $files = FileHelper::findFiles($this->getRootDirectoryPath() . DIRECTORY_SEPARATOR . 'contents', ['only' => ['*.md']]);
-                $json = [];
-                foreach ($files as $markdown) {
-                    $text = file_get_contents($markdown);
-                    
-                    $md = new Markdown();
-                    $r = $md->toResult($text);
-                    $cfg = $md->getFrontMatter($r);
-                    $href = pathinfo($markdown, PATHINFO_FILENAME);
-                    $json[$href] = [
-                        'content' => $text,
-                        'href' => $href,
-                        'title' => ArrayHelper::getValue($cfg, 'title', ''),
-                        'description' => ArrayHelper::getValue($cfg, 'description', ''),
-                    ];
-                }
-                file_put_contents($this->getContentsFilePath(), json_encode($json));
-            })
+            ->on(AfterBuildEvent::class, [MarkdownFilesGenerator::class])
             ->on(AfterBuildEvent::class, [PhpDocsGenerator::class]);
     }
 
