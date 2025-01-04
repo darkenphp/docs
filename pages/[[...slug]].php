@@ -28,22 +28,29 @@ $page = new class {
         return $markdown->toResult($text)->getContent();
     }
 
+    public function getContentsJsonItem() : array
+    {
+        $json = json_decode(file_get_contents($this->config->getContentsFilePath()), true);
+
+        return $json[$this->getSanitizedSlug()] ?? [];
+    }
+
     public function hasMarkdownFile()
     {
         return file_exists($this->getMarkdownFilePath());
     }
 
+    public function getSanitizedSlug() : string
+    {
+        return empty($this->slug) ? 'index' : preg_replace('/[^a-zA-Z0-9_\-]/', '', $this->slug);
+    }
+
     public function getMarkdownFilePath(): string
     {
-        $page = empty($this->slug) ? 'index' : $this->slug;
-
-        // remove any dangerous things from $page since we use it in a file path
-        $page = preg_replace('/[^a-zA-Z0-9_\-]/', '', $page);
-
-        return $this->config->getRootDirectoryPath() . DIRECTORY_SEPARATOR . "contents/{$page}.md";
+        return $this->config->getRootDirectoryPath() . DIRECTORY_SEPARATOR . "contents/{$this->getSanitizedSlug()}.md";
     }
 };
-$layout = (new Guide($page->slug))->openContent();
+$layout = (new Guide($page->getContentsJsonItem()['title'] ?? '404'))->openContent();
 ?>
     <?php if ($page->hasMarkdownFile()) : ?>
         <div class="md">

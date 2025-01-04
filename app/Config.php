@@ -79,14 +79,14 @@ class Config extends BaseConfig implements ContainerServiceInterface, EventServi
                     $md = new Markdown();
                     $r = $md->toResult($text);
                     $cfg = $md->getFrontMatter($r);
-                    $json[] = [
+                    $href = pathinfo($markdown, PATHINFO_FILENAME);
+                    $json[$href] = [
                         'content' => $text,
-                        'href' => pathinfo($markdown, PATHINFO_FILENAME),
+                        'href' => $href,
                         'title' => ArrayHelper::getValue($cfg, 'title', ''),
                         'description' => ArrayHelper::getValue($cfg, 'description', ''),
                     ];
                 }
-
                 file_put_contents($this->getContentsFilePath(), json_encode($json));
             })
             ->on(AfterBuildEvent::class, [PhpDocsGenerator::class]);
