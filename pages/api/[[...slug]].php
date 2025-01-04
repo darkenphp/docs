@@ -99,38 +99,27 @@ $api = new class {
             <h2 class="mt-8 mb-4  text-xl text-white">Property Details</h2>
             <div>
                 <?php foreach ($api->data->properties as $property) : ?>
-                    <?php $tab = (new ApiTab('$' . $property->name, $property->name, $property->visibility))->openSlot(); ?>
+                    <?php $tab = (new ApiTab('$' . $property->name, $property->name, $property->lineNumber, $api->data->github, $property->visibility, $property->type, null))->openSlot(); ?>
                     <?php if (!empty($property->description)) : ?>
                         <div class="md">
                             <?= $property->description; ?>
                         </div>
                     <?php endif; ?>
-                    <div class="text-lg">
-                        <?= $property->visibility; ?>
-                        <?= $property->static ? '<p>Static</p>' : ''; ?>
-                        <?= $property->type; ?>
-                        $<?= $property->name; ?> = <?= $property->default; ?>;
-                    </div>
                     <?= $tab->closeSlot(); ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
 
         <?php if (count($api->data->methods) > 0) : ?>
-            <h2 class="mt-8 mb-4 text-xl text-white">Method Detais</h2>
+            <h2 class="mt-8 mb-4 text-xl text-white">Method Details</h2>
             <div>
                 <?php foreach ($api->data->methods as $method) : ?>
-                    <?php $tab = (new ApiTab($method->name . '()', $method->name, $method->visibility))->openSlot(); ?>
+                    <?php $tab = (new ApiTab($method->name, $method->name, $method->lineNumber, $api->data->github, $method->visibility, $method->returnType, $method->parameters))->openSlot(); ?>
                     <?php if (!empty($method->description)) : ?>
                         <div class="md">
                             <?= $method->description; ?>
                         </div>
                     <?php endif; ?>
-                    <div class="lg">
-                        <?= $method->visibility; ?>
-                        <?= $method->static ? '<p>Static</p>' : ''; ?>
-                        <?= $method->name; ?>(<?= $method->parametersString; ?>)
-                    </div>
                     <div class="mt-3">
                         <table class="w-full text-sm text-grey rounded-lg">
                             <tbody>
@@ -140,14 +129,12 @@ $api = new class {
                                         <td class="text-white font-bold"><?= $parameter->type; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php if ($method->returnType) : ?>
                                 <tr>
                                     <td class="py-2" style="width:140px">Return</td>
                                     <td class="text-white font-bold"><?= $method->returnType; ?></td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2">Throws</td>
-                                    <td></td>
-                                </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
