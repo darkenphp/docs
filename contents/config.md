@@ -10,3 +10,11 @@ One of the main goals behind the Framework is to have everything as PHP objects 
 ## Configuration Object
 
 Every configuration must implement @(Darken\Config\ConfigInterface)
+
+## Base Config for good Starting Point
+
+@(Darken\Config\BaseConfig) is a good starting point for your configuration, it already implements the `ConfigInterface` and has some useful methods.
+
+## Environment Variables
+
+## Add methods to your Config
