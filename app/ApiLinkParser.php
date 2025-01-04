@@ -12,7 +12,7 @@ class ApiLinkParser implements InlineParserInterface
     public function getMatchDefinition(): InlineParserMatch
     {
         // Correctly escaped backslashes for single-quoted PHP string
-        return InlineParserMatch::regex('@\(([A-Za-z0-9_\\\\]{1,100})\)');
+        return InlineParserMatch::regex('@\(([A-Za-z0-9\:\(\)_\\\\]{1,100})\)');
     }
 
     public function parse(InlineParserContext $inlineContext): bool
@@ -31,14 +31,27 @@ class ApiLinkParser implements InlineParserInterface
         // Grab the full class name including namespaces
         [$fullClassName] = $inlineContext->getSubMatches();
 
+        $parts = explode('::', $fullClassName);
+
+        $className = $parts[0];
+        $methodOrProperty = $parts[1] ?? null;
+
         // Slugify the class name: replace backslashes with hyphens and convert to lowercase
-        $slugifiedClassName = strtolower(str_replace('\\', '-', $fullClassName));
+        $slugifiedClassName = strtolower(str_replace('\\', '-', $className));
 
         // Create the URL. Adjust the base path as necessary.
         $url = '/api/' . $slugifiedClassName;
 
+        if ($methodOrProperty) {
+            $url .= '#' . str_replace(['(', ')', '$'], '', $methodOrProperty);
+        }
+
         // Create the link text. You can customize this as needed.
-        $linkText = ' ↱ ' . $fullClassName;
+        $linkText = ' ↱ ' . $className;
+
+        if ($methodOrProperty) {
+            $linkText .= ' ⇀ ' . $methodOrProperty;
+        }
 
         // Append the Link node to the container
         $inlineContext->getContainer()->appendChild(new Link($url, $linkText));
