@@ -28,6 +28,7 @@ $layout = (new Layout($guide->title, [
     'Middleware' => '/middleware',
     'APIs' => 'apis',
     'Events' => '/events',
+    'Console Commands' => '/console',
     'Frontend' => null,
     'Components' => '/components',
     'Layouts' => '/layouts',
