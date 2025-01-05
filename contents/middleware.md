@@ -40,5 +40,41 @@ class CorsMiddleware implements MiddlewareInterface
 }
 ```
 
+Example for Authentication middleware.
+
+```php
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+{
+    // Retrieve the authentication header from the request
+    $authHeaderValue = $request->getHeaderLine($this->authHeader);
+
+    // Check if the authentication token is present and valid
+    if (empty($authHeaderValue) || $authHeaderValue !== $this->expectedToken) {
+        // Return a 401 Unauthorized response
+        return new Response(
+            401,
+            ['Content-Type' => 'application/json'],
+            json_encode(['error' => 'Unauthorized'])
+        );
+    }
+
+    // Authentication successful; proceed to the next middleware or handler
+    return $handler->handle($request);
+}
+```
+
+Example to add a header value to the response.
+
+```php
+ public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        // Proceed to the next middleware or handler and get the response
+        $response = $handler->handle($request);
+
+        // Add the custom header to the response
+        return $response->withHeader($this->name, $this->value);
+    }
+```
+
 ## Page
 
