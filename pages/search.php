@@ -2,11 +2,14 @@
 
 use App\Config;
 use Build\components\Guide;
+use Darken\Attributes\HttpMethod;
 use Darken\Attributes\Inject;
 use Darken\Attributes\QueryParam;
 use Darken\Debugbar\DebugBarConfig;
 
-$search = new class {
+$search = new 
+#[HttpMethod('GET')]
+class {
     #[QueryParam]
     public string|null $query;
 
