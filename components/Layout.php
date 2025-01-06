@@ -51,7 +51,7 @@ $layout = new class {
     <input type="checkbox" id="menu-toggle" class="hidden peer">
 
     <!-- Sidebar -->
-    <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
+    <div class="hidden peer-checked:flex md:flex flex-col w-80 bg-darken transition-all duration-300 ease-in-out">
       <a href="/" class="flex items-center justify-between h-16 px-5 mt-1">
         <span class="text-white font-extralight uppercase">Darken Docs</span>
         <label for="menu-toggle" class="text-white cursor-pointer">

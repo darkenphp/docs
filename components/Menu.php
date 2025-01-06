@@ -26,7 +26,7 @@ $menu = new class {
 <?php if ($menu->isTitleOnly()): ?>
   <div class="text-grey text-xs uppercase px-3 font-light mb-1 mt-5"><?= $menu->label ?></div>
 <?php else: ?>
-<a href="<?= $menu->href; ?>" class="<?= $menu->isActive() ? 'text-primary' : 'text-white'; ?> flex items-center py-1 px-3  hover:bg-primary hover:text-white rounded-lg group text-xs font-bold">
+<a href="<?= $menu->href; ?>" class="<?= $menu->isActive() ? 'text-primary' : 'text-white'; ?> flex items-center py-1 px-3 hover:bg-primary hover:text-white rounded-lg group text-xs font-bold text-ellipsis whitespace-nowrap overflow-hidden">
   <?= $menu->label ?>
   <?php if ($menu->isActive()): ?>
     <span class="ml-auto text-primary hover:text-white">&larr;</span>
