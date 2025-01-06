@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/darkenphp/framework.git",
-                "reference": "e784c2ab386ca13c26f50ddb72adabcc1e22abea"
+                "reference": "8f486c07aa2c68d29b0777d71f2e5e855ecb5fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darkenphp/framework/zipball/e784c2ab386ca13c26f50ddb72adabcc1e22abea",
-                "reference": "e784c2ab386ca13c26f50ddb72adabcc1e22abea",
+                "url": "https://api.github.com/repos/darkenphp/framework/zipball/8f486c07aa2c68d29b0777d71f2e5e855ecb5fea",
+                "reference": "8f486c07aa2c68d29b0777d71f2e5e855ecb5fea",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "issues": "https://github.com/darkenphp/framework/issues",
                 "source": "https://github.com/darkenphp/framework/tree/main"
             },
-            "time": "2025-01-06T10:15:17+00:00"
+            "time": "2025-01-06T10:28:04+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

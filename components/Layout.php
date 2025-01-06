@@ -52,7 +52,7 @@ $layout = new class {
 
     <!-- Sidebar -->
     <div class="hidden peer-checked:flex md:flex flex-col w-64 bg-darken transition-all duration-300 ease-in-out">
-      <a href="/" class="flex items-center justify-between h-16 px-6 mt-1">
+      <a href="/" class="flex items-center justify-between h-16 px-5 mt-1">
         <span class="text-white font-extralight uppercase">Darken Docs</span>
         <label for="menu-toggle" class="text-white cursor-pointer">
           <svg
