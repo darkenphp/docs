@@ -48,15 +48,13 @@ All components (or pages, which are technically just components) use anonymous c
 
 ```php
 $foo = new class {
-    public string $bar = 'baz';
-
-    public function largeBar(): string
+    public function bar(): string
     {
-        return strtoupper($this->bar);
+        return 'baz';
     }
 };
 ?>
-<h1><?= $foo->largeBar(); ?></h1>
+<h1><?= $foo->bar(); ?></h1>
 ```
 
 Since these files are not namespaced, we need to create a file in the `.build` directory that is resolvable by a namespaced file and loads the original code. The namespaced file is what we call the *polyfill* file, and the original file will be compiled—this is called the *compiled* file. This means the above example file `pages/test.php` will be compiled to:
@@ -110,7 +108,7 @@ $foo = new class($this) {
 
 This is where the only magic happens. Since you cannot have a constructor in an anonymous class and directly run this object without creating it first, Darken does this during the compile step for you. This is, of course, only needed when you have to interact with the runtime object—for example, getting the router parameters, using Dependency Injection, collecting query params, or handling other runtime-related tasks. Therefore, PHP attributes can be used to describe a property or class, and Darken will inject the correct code during build time.
 
-## Example with Constructor Parameters
+## Example with Constructor Parameters
 
 To automatically inject a constructor parameter into a class attribute, you can use the @(Darken\Attributes\ConstructorParam) attribute. This ensures that the class generates a constructor where you have to enter a valid, correctly typed parameter:
 
@@ -143,7 +141,7 @@ class Test extends \Darken\Code\Runtime
 }
 ```
 
-Now the compiled code will inject the constructor parameter in the constructor. This looks like this (simplified):
+Now the compiled code (which is your original code, just modified) will inject the constructor parameter in the constructor. This looks like this (simplified):
 
 ```php
 $obj = new class($this)
@@ -156,6 +154,7 @@ $obj = new class($this)
         $this->bar = $runtime->getData('constructorParams', 'bar');
     }
 };
+<h1><?= $obj->bar; ?></h1>
 ```
 
 The methods `getData` is provided by the @(Darken\Code\Runtime) class and allow communication between the polyfill and the compiled file, since they share the same @(Darken\Code\Runtime) class.
