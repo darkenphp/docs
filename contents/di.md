@@ -5,21 +5,21 @@ description: Dependency Injection in Darken PHP.
 
 # Dependency Injection
 
-The @(Darken\Service\ContainerService) is a simple dependency injection container that allows you to define services and their dependencies. Its a core concept troughout the whole framework and should be intensivly used by developers, for applications, components and extensions. At any place in Darken it is possible to inject classes defined in the container.
+@(Darken\Service\ContainerService) is a simple dependency injection container that allows you to define services and their dependencies. This is a core concept throughout the framework and should be used extensively by developers for applications, components, and extensions. Anywhere in Darken, you can inject classes defined in the container.
 
-In order to start providing new containers and register them then [Configuration](/config) needes to be extenend using the @(Darken\Service\ContainerServiceInterface) which will look like this:
+To provide new containers and register them, extend your [Configuration](/config.md) using @(Darken\Service\ContainerServiceInterface):
 
 ```php
-public function containers(ContainerService $service): ContainerService
+public function containers(Darken\Service\ContainerService $service): Darken\Service\ContainerService
 {
     return $service
         ->register(Db::class, ['dsn' => 'sqlite::memory:']);
 }
 ```
 
-## Inject Param
+## Inject Attribute
 
-The makes Darken very powerfull since the class to inject (\App\Db in this case) is type hinted in your Component or Page:
+This makes Darken very powerful, since the class to inject (e.g., `\App\Db`) is type-hinted in your Component or Page:
 
 ```php
 $page = new class {
@@ -31,3 +31,5 @@ $page = new class {
 ```
 
 ## Auto Wiring
+
+Darken supports auto-wiring, so dependencies are automatically resolved and injected based on type hints, reducing boilerplate and making your code cleaner.

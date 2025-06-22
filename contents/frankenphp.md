@@ -4,7 +4,8 @@ description: Run PHP applications in a serverless environment with FrankenPHP.
 ---
 
 # FrankenPHP
-change the index.php to handle frankenphp:
+
+You can run your Darken application in a serverless environment using FrankenPHP. To do this, update your `index.php` to handle FrankenPHP requests:
 
 ```php
 <?php
@@ -41,7 +42,7 @@ for ($nbRequests = 0; !$maxRequests || $nbRequests < $maxRequests; ++$nbRequests
 }
 ```
 
-start the docker with frankenphp
+To start FrankenPHP with Docker:
 
 ```bash
 docker run \

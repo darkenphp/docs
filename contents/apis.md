@@ -3,27 +3,27 @@ title: APIs
 description: Define APIs and handle requests.
 ---
 
-# API
+# APIs
 
-Darken has a very strong focus on APIs, it can be used only to create APIs instead of template based Websites. The [Routing](routing) system makes it very easy to define APIs, therefore also large Projects won't get messy.
+Darken has a strong focus on APIs. You can use it to create APIs instead of template-based websites. The [Routing](routing.md) system makes it easy to define APIs, so even large projects remain organized.
 
-## Return Response
+## Returning a Response
 
-Compared to a Component or Page, an API only returns the response, this can be done by returning a `Psr\Http\Message\ResponseInterface` object or which the @(Darken\Web\Response) class is a implementation of, and instead of rendering a template, you can directly return the anonymus class. In order to let Darken know that this is an API, you must implement the @(Darken\Code\InvokeResponseInterface) interface.
+Unlike a component or page, an API only returns a response. This can be done by returning a `Psr\Http\Message\ResponseInterface` object, or the @(Darken\Web\Response) class (which is an implementation). Instead of rendering a template, you can directly return an anonymous class. To let Darken know this is an API, implement the @(Darken\Code\InvokeResponseInterface) interface.
 
 ```php
 <?php
 use Darken\Web\Response;
 
 return new class implements Darken\Code\InvokeResponseInterface {
-
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $data = json_encode(['message' => 'Hello, World!']);
-        
         return new Response($data, 200, [
             'Content-Type' => 'application/json'
         ]);
     }
 };
 ```
+
+> **Tip:** Use APIs for headless applications, SPAs, or to provide data to other services.

@@ -5,9 +5,9 @@ description: Handle requests and responses.
 
 # Middleware
 
-Middleware are only handled when @(Darken\Config\PagesConfigInterface) is implemented. Middleware are classes that can intercept the request and response objects. They are executed in the order they are added to the middleware stack. Middleware can be used to modify the request and response objects, for example to add headers or to modify the body.
+Middleware are only handled when @()Darken\Config\PagesConfigInterface is implemented. Middleware are classes that can intercept the request and response objects. They are executed in the order they are added to the middleware stack. Middleware can be used to modify the request and response objects, for example to add headers or modify the body.
 
-## Global
+## Global Middleware
 
 Global middleware are executed on every request. They are added to the middleware stack in the configuration.
 
@@ -18,13 +18,13 @@ class Config implements MiddlewareServiceInterface
     public function middlewares(MiddlewareService $service): MiddlewareService
     {
         return $service
-            ->register([\Darken\Middleware\CorsMiddleware::class, \Darken\Enum\MiddlewarePosition::BEFORE]);
+            ->register([Darken\Middleware\CorsMiddleware::class, Darken\Enum\MiddlewarePosition::BEFORE]);
     }
 }
 ?>
 ```
 
-The middleware must implement the @(Darken\Middleware\MiddlewareInterface) interface.
+The middleware must implement the @()Darken\Middleware\MiddlewareInterface interface.
 
 ```php
 class CorsMiddleware implements MiddlewareInterface
@@ -40,7 +40,7 @@ class CorsMiddleware implements MiddlewareInterface
 }
 ```
 
-Example for Authentication middleware.
+## Example: Authentication Middleware
 
 ```php
 public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -63,18 +63,18 @@ public function process(ServerRequestInterface $request, RequestHandlerInterface
 }
 ```
 
-Example to add a header value to the response.
+## Example: Adding a Header to the Response
 
 ```php
- public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        // Proceed to the next middleware or handler and get the response
-        $response = $handler->handle($request);
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+{
+    // Proceed to the next middleware or handler and get the response
+    $response = $handler->handle($request);
 
-        // Add the custom header to the response
-        return $response->withHeader($this->name, $this->value);
-    }
+    // Add the custom header to the response
+    return $response->withHeader($this->name, $this->value);
+}
 ```
 
-## Page
+Middleware are a powerful way to add cross-cutting concerns like authentication, logging, or CORS to your application in a clean and reusable way.
 

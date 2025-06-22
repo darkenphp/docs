@@ -16,7 +16,7 @@ sequenceDiagram
     participant Compiled Code
     participant Polyfill
     Original Code-->>Compiled Code: Compile Original Code
-    Compiled Code-->>Polyfill: Inlclude Compiled Code in Polyfill
+    Compiled Code-->>Polyfill: Include Compiled Code in Polyfill
 </pre>
 
 This is what the compile process looks like:
@@ -38,13 +38,13 @@ flowchart TD
  C[Compiled File]
 </pre>
 
-To understand how Darken works, we need to understand the concept of compiling.
+To understand how Darken works, you need to understand the concept of compiling.
 
 ## Namespaced Files
 
-All components (or pages, which are technically just components) use anonymous classes. This allows you to put logic into the class but also directly use it in the template.
+All components (or pages, which are technically just components) use anonymous classes. This allows you to put logic into the class and directly use it in the template.
 
-`Example File: pages/test.php`
+**Example File: `pages/test.php`**
 
 ```php
 $foo = new class {
@@ -57,7 +57,7 @@ $foo = new class {
 <h1><?= $foo->bar(); ?></h1>
 ```
 
-Since these files are not namespaced, we need to create a file in the `.build` directory that is resolvable by a namespaced file and loads the original code. The namespaced file is what we call the *polyfill* file, and the original file will be compiled—this is called the *compiled* file. This means the above example file `pages/test.php` will be compiled to:
+Since these files are not namespaced, Darken creates a file in the `.build` directory that is resolvable by a namespaced file and loads the original code. The namespaced file is called the *polyfill* file, and the original file is the *compiled* file. This means the above example file `pages/test.php` will be compiled to:
 
 + polyfill: `.build/pages/test.php` with namespace `Build\pages\test`, class name `test`
 + compiled: `.build/pages/test.compiled.php`

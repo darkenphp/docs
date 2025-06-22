@@ -5,10 +5,10 @@ description: Extend Darken PHP with custom extensions.
 
 # Building Extensions
 
-Each build run will expose the `Extension.php` to the `.build` directory, which is available under the namespace `Vendor\Extension\Build` (based on the Config used in tune `darken` bin file of your Project Root), the Extension implements @(Darken\Service\Extension) class.
+Each build run will expose the `Extension.php` to the `.build` directory, available under the namespace `Vendor\Extension\Build` (based on the config used in the `darken` bin file of your project root). The extension implements the @(Darken\Service\Extension) class.
 
-If your extension useses and registers a Container, this Container will be a required Parameter in the `Extension.php` constructor. This ensures the app which loads your extension has all available Containers to inject.
+If your extension uses and registers a container, this container will be a required parameter in the `Extension.php` constructor. This ensures the app loading your extension has all available containers to inject.
 
-## Darken First Party Extensions
+## Darken First-Party Extensions
 
-See [https://github.com/darkenphp-extensions[Darken PHP Extensions]] for a list of first party extensions.
+See [Darken PHP Extensions](https://github.com/darkenphp-extensions) for a list of first-party extensions.
