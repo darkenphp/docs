@@ -39,7 +39,7 @@ $component = new class {
     public string $content;
 };
 ?>
-<div style="background: red;">
+<div style="background-color: red;">
     <?= $component->content; ?>
 </div>
 ```
