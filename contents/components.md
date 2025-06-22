@@ -9,23 +9,23 @@ A component is a reusable piece of code that can be used in multiple pages. Comp
 
 ## RouteParam
 
-The @()Darken\Attributes\RouteParam attribute allows you to bind route parameters directly to properties in your component class. This makes it easy to access dynamic values from the URL.
+The @(Darken\Attributes\RouteParam) attribute allows you to bind route parameters directly to properties in your component class. This makes it easy to access dynamic values from the URL.
 
 ## Inject
 
-The @()Darken\Attributes\Inject attribute lets you inject dependencies (like services or database connections) directly into your component properties, making your code cleaner and more testable.
+The @(Darken\Attributes\Inject) attribute lets you inject dependencies (like services or database connections) directly into your component properties, making your code cleaner and more testable.
 
 ## ConstructorParam
 
-Use @()Darken\Attributes\ConstructorParam to pass parameters to your component's constructor, allowing for more flexible and configurable components.
+Use @(Darken\Attributes\ConstructorParam) to pass parameters to your component's constructor, allowing for more flexible and configurable components.
 
 ## QueryParam
 
-The @()Darken\Attributes\QueryParam attribute binds query string parameters from the URL to your component properties.
+The @(Darken\Attributes\QueryParam) attribute binds query string parameters from the URL to your component properties.
 
 ## PostParam
 
-The @()Darken\Attributes\PostParam attribute binds POST request data to your component properties, making form handling straightforward.
+The @(Darken\Attributes\PostParam) attribute binds POST request data to your component properties, making form handling straightforward.
 
 ## Slots
 

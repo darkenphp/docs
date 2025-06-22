@@ -5,7 +5,7 @@ description: Define routes and handle requests.
 
 # Routing
 
-Routing is available if you have a `pages` directory. Pages are components rendered as full pages using PSR-7 HTTP request and response objects, which can be intercepted by a middleware stack. To enable routing, your configuration must implement the @()Darken\Config\PagesConfigInterface, which also defines the folder where your pages are located.
+Routing is available if you have a `pages` directory. Pages are components rendered as full pages using PSR-7 HTTP request and response objects, which can be intercepted by a middleware stack. To enable routing, your configuration must implement the @(Darken\Config\PagesConfigInterface), which also defines the folder where your pages are located.
 
 ## File-Based Routing
 
@@ -17,7 +17,7 @@ The `index.php` file in the `pages` folder is the home page. So `pages/index.php
 
 ## Route Parameters
 
-The routing system supports route parameters, declared with `[[` and `]]` in the file name. For example, `hello-[[name]].php` in the `pages` folder is accessible at `http://localhost:8009/hello-world`. This also works with folders, so `pages/about/[[name]].php` is accessible at `http://localhost:8009/about/darken`. Route parameters can be retrieved with the @()Darken\Attributes\RouteParam attribute.
+The routing system supports route parameters, declared with `[[` and `]]` in the file name. For example, `hello-[[name]].php` in the `pages` folder is accessible at `http://localhost:8009/hello-world`. This also works with folders, so `pages/about/[[name]].php` is accessible at `http://localhost:8009/about/darken`. Route parameters can be retrieved with the @(Darken\Attributes\RouteParam) attribute.
 
 ```php
 <?php

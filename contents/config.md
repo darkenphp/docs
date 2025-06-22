@@ -9,7 +9,7 @@ One of the primary goals of Darken is to make everything available as PHP object
 
 ## Configuration Object
 
-Every configuration must implement @()Darken\Config\ConfigInterface. For a solid starting point, you can extend @()Darken\Config\BaseConfig.
+Every configuration must implement @(Darken\Config\ConfigInterface). For a solid starting point, you can extend @(Darken\Config\BaseConfig).
 
 ```php
 class Config extends Darken\Config\BaseConfig
@@ -54,7 +54,7 @@ class Config extends Darken\Config\BaseConfig
 }
 ```
 
-The @()Darken\Config\BaseConfig class already implements @()Darken\Config\ConfigInterface and includes several useful methods to streamline your configuration. It also implements the @()Darken\Config\PagesConfigInterface, which indicates that the application will use pages. For instance, if you are building an [Extension](/extensions.md), you won't need to implement the @()Darken\Config\PagesConfigInterface.
+The @(Darken\Config\BaseConfig) class already implements @(Darken\Config\ConfigInterface) and includes several useful methods to streamline your configuration. It also implements the @(Darken\Config\PagesConfigInterface), which indicates that the application will use pages. For instance, if you are building an [Extension](/extensions.md), you won't need to implement the @(Darken\Config\PagesConfigInterface).
 
 ## Environment Variables
 

@@ -8,7 +8,7 @@ description: Extend the Compiler with a custom runtime.
 > [!IMPORTANT]
 > This is a conceptual feature and not fully implemented yet.
 
-Darken is designed to be extensible. In the future, you will be able to add custom runtimes to the compiler, allowing you to modify or enhance how your application is executed. These runtimes may interact with the compiler or extend the behavior of @()Darken\Web\Application and related classes.
+Darken is designed to be extensible. In the future, you will be able to add custom runtimes to the compiler, allowing you to modify or enhance how your application is executed. These runtimes may interact with the compiler or extend the behavior of @(Darken\Web\Application) and related classes.
 
 ## Example Ideas
 

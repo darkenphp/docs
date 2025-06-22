@@ -49,7 +49,7 @@ $page = new class {
 
 - **Simplicity**: Start small and extend your project gracefully.
 - **Efficiency**: No unnecessary dependencies or bloated setup.
-- **Familiarity**: PHP developers can leverage tools like @()Composer with ease.
+- **Familiarity**: PHP developers can leverage tools like Composer with ease.
 - **Performance**: Optimized for production with minimal runtime overhead.
 
 Darken PHP is ideal for developers seeking a lightweight, modern framework with a clean and efficient structure.
