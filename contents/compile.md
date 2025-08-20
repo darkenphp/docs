@@ -114,7 +114,7 @@ To automatically inject a constructor parameter into a class attribute, you can 
 
 ```php
 $obj = new class {
-    #[\Darken\Attributes\ConstructorParam]
+    #[\Darken\Attributes\ConstructorParam(name: 'bar', order: 1)]
     public string $bar;
 };
 ?>

@@ -7,8 +7,8 @@ use Darken\Attributes\Inject;
 use Darken\Attributes\Slot;
 
 $api = new class {
-    
-    #[ConstructorParam]
+
+    #[ConstructorParam(name: 'title', order: 1)]
     public string $title;
 
     #[Slot()]

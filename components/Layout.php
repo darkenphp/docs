@@ -6,10 +6,10 @@ use Darken\Code\Runtime;
 use Darken\Debugbar\DebugBarConfig;
 
 $layout = new class {
-  #[\Darken\Attributes\ConstructorParam]
+  #[\Darken\Attributes\ConstructorParam(name: 'title', order: 1)]
   public $title;
 
-  #[\Darken\Attributes\ConstructorParam]
+  #[\Darken\Attributes\ConstructorParam(name: 'nav', order: 2)]
   public array $nav;
 
   #[\Darken\Attributes\Slot]

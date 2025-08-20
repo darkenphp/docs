@@ -7,25 +7,25 @@ $tab = new class {
     #[Slot()]
     public $slot;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'title', order: 1)]
     public string $title;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'id', order: 2)]
     public string $id;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'lineNumber', order: 3)]
     public string|int $lineNumber;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'github', order: 4)]
     public string $github;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'visibility', order: 5)]
     public string $visibility;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'returnType', order: 6)]
     public string|null $returnType;
 
-    #[ConstructorParam()]
+    #[ConstructorParam(name: 'arguments', order: 7)]
     public array|null $arguments;
 
     public function getFileName() : string

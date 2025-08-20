@@ -19,6 +19,26 @@ The @(Darken\Attributes\Inject) attribute lets you inject dependencies (like ser
 
 Use @(Darken\Attributes\ConstructorParam) to pass parameters to your component's constructor, allowing for more flexible and configurable components.
 
+When using @(Darken\Attributes\ConstructorParam), the order of constructor parameters is critical for compatibility. If you change the order of properties in your class, the generated constructor signature will also change, which can break existing code. By default, parameters are ordered based on property declaration order, so rearranging properties changes the constructor order. To ensure stable constructor signatures, always specify the `$order` parameter. The `$name` parameter lets you control the name of the constructor parameter (if omitted, the property name is used). The `$order` parameter sets the explicit position in the constructor; parameters with an order are sorted by this value, and others are sorted by declaration order.
+
+For example:
+
+```php
+class UserProfile {
+    #[ConstructorParam('id', 1)]
+    public int $userId;
+
+    #[ConstructorParam('name', 2)]
+    public string $username;
+
+    #[ConstructorParam('email', 3)]
+    public string $emailAddress;
+}
+// Always generates: new UserProfile($id, $name, $email)
+```
+
+**Tip:** Use explicit `$order` for all constructor parameters to avoid accidental breaking changes when refactoring.
+
 ## QueryParam
 
 The @(Darken\Attributes\QueryParam) attribute binds query string parameters from the URL to your component properties.

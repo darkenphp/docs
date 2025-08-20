@@ -3,10 +3,10 @@
 use Darken\Web\Request;
 
 $menu = new class {
-  #[\Darken\Attributes\ConstructorParam]
+  #[\Darken\Attributes\ConstructorParam(name: 'label', order: 1)]
   public string $label;
 
-  #[\Darken\Attributes\ConstructorParam]
+  #[\Darken\Attributes\ConstructorParam(name: 'href', order: 2)]
   public string|null $href;
 
   #[\Darken\Attributes\Inject]

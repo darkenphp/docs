@@ -6,7 +6,7 @@ use Darken\Attributes\Slot;
 
 $guide = new class {
     
-    #[ConstructorParam]
+    #[ConstructorParam(name: 'title', order: 1)]
     public string $title;
 
     #[Slot()]
